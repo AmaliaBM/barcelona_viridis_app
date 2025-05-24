@@ -1,0 +1,78 @@
+
+{
+"vegetation": [
+{
+    "id": 1,
+    "name": "lore ipsum",
+    "latinName": "lore ipsum",
+    "placeId": 1,
+    "category": "lore ipsum",
+    "description": "lore ipsum, lore ipsum, lore ipsum, lore ipsum",
+    "image": ""
+},
+{
+    "id": 2,
+    "name": "lore ipsum",
+    "latinName": "lore ipsum",
+    "placeId": 1,
+    "category": "lore ipsum",
+    "description": "lore ipsum, lore ipsum, lore ipsum, lore ipsum",
+    "image": ""
+},
+{
+    "id": 3,
+    "name": "lore ipsum",
+    "latinName": "lore ipsum",
+    "placeId": 1,
+    "category": "lore ipsum",
+    "description": "lore ipsum, lore ipsum, lore ipsum, lore ipsum",
+    "image": ""
+},
+{
+    "id": 4,
+    "name": "lore ipsum",
+    "latinName": "lore ipsum",
+    "placeId": 1,
+    "category": "lore ipsum",
+    "description": "lore ipsum, lore ipsum, lore ipsum, lore ipsum",
+    "image": ""
+},
+{
+    "id": 5,
+    "name": "lore ipsum",
+    "latinName": "lore ipsum",
+    "placeId": 1,
+    "category": "lore ipsum",
+    "description": "lore ipsum, lore ipsum, lore ipsum, lore ipsum",
+    "image": ""
+}
+],
+"places": [
+{   "id": 1,
+    "name": "Gracia",
+    "description": "owjrlwmrr",
+    "image": ""
+},
+{   "id": 2,
+    "name": "Putxet i el farró",
+    "description": "owjrlwmrr",
+    "image": ""
+},
+{   "id": 3,
+    "name": "Sant Gervasi",
+    "description": "owjrlwmrr",
+    "image": ""
+},
+{   "id": 4,
+    "name": "Poble neu",
+    "description": "owjrlwmrr",
+    "image": ""
+},
+{   "id": 5,
+    "name": "Vallcarca",
+    "description": "owjrlwmrr",
+    "image": ""
+}
+]
+}
+
