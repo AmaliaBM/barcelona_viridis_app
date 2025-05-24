@@ -23,7 +23,7 @@
     "id": 3,
     "name": "lore ipsum",
     "latinName": "lore ipsum",
-    "placeId": 1,
+    "placeId": 2,
     "category": "lore ipsum",
     "description": "lore ipsum, lore ipsum, lore ipsum, lore ipsum",
     "image": ""
@@ -32,7 +32,7 @@
     "id": 4,
     "name": "lore ipsum",
     "latinName": "lore ipsum",
-    "placeId": 1,
+    "placeId": 3,
     "category": "lore ipsum",
     "description": "lore ipsum, lore ipsum, lore ipsum, lore ipsum",
     "image": ""
@@ -41,7 +41,7 @@
     "id": 5,
     "name": "lore ipsum",
     "latinName": "lore ipsum",
-    "placeId": 1,
+    "placeId": 5,
     "category": "lore ipsum",
     "description": "lore ipsum, lore ipsum, lore ipsum, lore ipsum",
     "image": ""
