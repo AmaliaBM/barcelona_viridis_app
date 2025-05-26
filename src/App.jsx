@@ -4,6 +4,8 @@ import { useState } from 'react';
 
 // Importación de páginas
 
+import HomePage from "./pages/HomePage"
+
 import About from './pages/About/About';
 import AboutAuthora from './pages/AboutAuthora/AboutAuthora';
 import ArticlesOfInterest from './pages/ArticlesOfInterest/ArticlesOfInterest';
