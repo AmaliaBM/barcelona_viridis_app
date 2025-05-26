@@ -1,31 +1,29 @@
 import { Link } from "react-router-dom";
 import "./HomePage.css";
 
-import Navbar from '../components/layout/Navbar/Navbar';
-import Footer from '../components/layout/Footer'
 
+import CustomCarousel from '../components/layout/CustomCarousel';
+
+const plantas = [
+  { title: "Primera planta", img: "url1" },
+  { title: "Segunda planta", img: "url2" },
+  { title: "Tercera planta", img: "url3" },
+];
 
 function HomePage() {
-  
   return (
     <div>
-      <Navbar />
-
       <main>
         <h1>Bienvenido a Barcelona Viridis</h1>
 
         <section>
           <h2>Artículos de interés</h2>
-          
         </section>
 
         <section>
-          <h2>Plantas destacadas de Barcelona</h2>
-          {/*<Carousel images={photos} />*/}
+        <CustomCarousel vegetation={plantas} />
         </section>
       </main>
-
-      <Footer />
     </div>
   );
 }

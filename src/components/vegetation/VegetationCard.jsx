@@ -8,7 +8,7 @@ function VegetationCard(props) {
       <div id="cada-vegetation">
         <img src={props.vegetation.image ? props.vegetation.image : "/error404.avif"} alt="vegetation photo" />
         <div id="datos-vegetation">
-          <p>{props.vegetation.name}</p>
+          <p>{props.vegetation.title}</p>
         </div>
       </div>
     </Link>

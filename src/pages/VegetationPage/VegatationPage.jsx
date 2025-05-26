@@ -1,7 +1,7 @@
-import VegetationCard from "./VegetationCard";
-import "./Vegetation.css";
+import VegetationCard from "../../components/vegetation/VegetationCard";
+import "./VegetationPage.css";
 
-function Vegetation({ vegetationList, setVegetationList }) {
+function VegetationPage({ vegetationList, setVegetationList }) {
   const handleDeleteVegetation = (index) => {
     const cloneState = [...vegetationList];
     cloneState.splice(index, 1);
@@ -9,7 +9,7 @@ function Vegetation({ vegetationList, setVegetationList }) {
   };
 
   return (
-    <div id="Vegetation">
+    <div id="VegetationPage">
       {vegetationList.map((eachVegetation, index) => {
         return (
           <VegetationCard
@@ -23,4 +23,4 @@ function Vegetation({ vegetationList, setVegetationList }) {
     </div>
   );
 }
-export default Vegetation;
+export default VegetationPage;

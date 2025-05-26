@@ -10,10 +10,13 @@ import About from './pages/About/About';
 import AboutAuthora from './pages/AboutAuthora/AboutAuthora';
 import ArticlesOfInterest from './pages/ArticlesOfInterest/ArticlesOfInterest';
 import VegetationDetailsPage from './pages/VegetationDetailsPage/VegetationDetailsPage';
+import VegetationPage from './pages/VegetationPage/VegatationPage';
 import EditVegetationPage from './pages/EditVegetationPage/EditVegetationPage';
 import FormAddVegetationPage from './pages/AddFormVegetationPage/FormAddVegetation';
+import PlaceDetailsPage from './pages/PlaceDetailsPage/PlaceDetailsPage';
 import PlaceListPage from './pages/PlaceListPage/PlaceListPage';
 import NotFound from './pages/NotFound/NotFound';
+
 
 
 // Componentes globales
@@ -22,8 +25,8 @@ import Footer from './components/layout/Footer';
 
 
 function App() {
-  const [vegetationList, setVegetationList] = useState(VegetationArr);
-  const [placesList, setPlacesList] = useState(PlacesArr);
+  const [vegetationList, setVegetationList] = useState([]);//useState(VegetationArr);
+  const [placesList, setPlacesList] = useState([]);//useState(PlacesArr);
 
   return (
     <div className="App">
@@ -36,12 +39,13 @@ function App() {
           <Route path="/articles-of-interest" element={<ArticlesOfInterest />} />
 
           {/* Vegetation */}
+          <Route path="/vegetation" element={<VegetationPage vegetationList={vegetationList} setVegetationList={setVegetationList} />} />
           <Route path="/vegetation/:id" element={<VegetationDetailsPage />} />
           <Route path="/vegetation/:id/edit" element={<EditVegetationPage />} />
           <Route path="/add-vegetation" element={<FormAddVegetationPage />} />
 
           {/* Places */}
-          <Route path="/places" element={<PlaceListPage />} />
+          <Route path="/places" element={<PlaceListPage placesList={placesList} setPlaceList={setPlacesList} />} />
           <Route path="/places/:id" element={<PlaceDetailsPage />} />
 
           {/* 404 */}
@@ -52,5 +56,4 @@ function App() {
     </div>
   );
 }
-
 export default App;
