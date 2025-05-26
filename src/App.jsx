@@ -1,25 +1,23 @@
 import { Routes, Route } from 'react-router-dom';
 import { useState } from 'react';
 
-// Datos iniciales (si los tienes)
-import VegetationArr from './data/VegetationArr';
-import PlacesArr from './data/PlacesArr';
 
 // Importación de páginas
-import HomePage from './pages/HomePage/HomePage';
+
 import About from './pages/About/About';
 import AboutAuthora from './pages/AboutAuthora/AboutAuthora';
 import ArticlesOfInterest from './pages/ArticlesOfInterest/ArticlesOfInterest';
 import VegetationDetailsPage from './pages/VegetationDetailsPage/VegetationDetailsPage';
 import EditVegetationPage from './pages/EditVegetationPage/EditVegetationPage';
-import FormAddVegetationPage from './pages/FormAddVegetationPage/FormAddVegetationPage';
+import FormAddVegetationPage from './pages/AddFormVegetationPage/FormAddVegetation';
 import PlaceListPage from './pages/PlaceListPage/PlaceListPage';
-import PlaceDetailsPage from './pages/PlaceDetailsPage/PlaceDetailsPage';
 import NotFound from './pages/NotFound/NotFound';
 
+
 // Componentes globales
-import Navbar from './components/Navbar/Navbar';
-import Footer from './components/Footer/Footer';
+import Navbar from './components/layout/Navbar/Navbar';
+import Footer from './components/layout/Footer';
+
 
 function App() {
   const [vegetationList, setVegetationList] = useState(VegetationArr);

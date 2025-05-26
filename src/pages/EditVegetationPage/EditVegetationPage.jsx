@@ -1,63 +1,39 @@
-
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import "./EditVegetationPage/EditVegetationPage.css";
+import "./EditVegetationPage.css";
 
 function EditVegetation({ vegetationList, setVegetationList, index }) {
   const [name, setName] = useState(vegetationList[index].name);
-  const [latinName, setLatinName] = useState("");
-  const [category, setCategory] = useState("");
-  const [description, setDescription] = useState("");
-  const [image, setImage] = useState("");
-
-  const handleName = (event) => {
-    setName(event.target.value);
-  };
-
-  const handleLatinName = (event) => {
-    setLatinName(event.target.value);
-  };
-
-  const handleCategory = (event) => {
-    setCategory(event.target.value);
-  };
-
-
-  const handleDescription = (event) => {
-    setDescription(event.target.value);
-  };
-
-  const handleImage = (event) => {
-    setImage(event.target.value);
-  };
+  const [latinName, setLatinName] = useState(vegetationList[index].latinName);
+  const [category, setCategory] = useState(vegetationList[index].category);
+  const [description, setDescription] = useState(vegetationList[index].description);
+  const [image, setImage] = useState(vegetationList[index].image);
 
   const navigate = useNavigate();
 
   const handleEditVegetation = (event) => {
     event.preventDefault();
 
-    const VegetationEdit = {
-    ...vegetationlist[index],
-      name: name,
-      latinName: latinName,
-      category: category,
-      description: description,
+    const vegetationEdit = {
+      ...vegetationList[index],
+      name,
+      latinName,
+      category,
+      description,
       image: image || "/error404.avif",
-      id: String(Math.floor(Math.random() * 10000000)),
     };
-    
-    const newVegetation = [...vegetationList];
-    newVegetation[index] = VegetationEdit;
 
-    setVegetationList(newVegetations);
+    const newVegetationList = [...vegetationList];
+    newVegetationList[index] = vegetationEdit;
+
+    setVegetationList(newVegetationList);
 
     navigate("/");
   };
 
-
   return (
     <div id="addvegetation">
-        <h1>Edit Vegetation</h1>
+      <h1>Edit Vegetation</h1>
 
       <form onSubmit={handleEditVegetation}>
         <label htmlFor="name">Vegetation Name:</label>
@@ -65,8 +41,9 @@ function EditVegetation({ vegetationList, setVegetationList, index }) {
           type="text"
           name="name"
           id="name"
-          onChange={handleName}
+          onChange={(e) => setName(e.target.value)}
           value={name}
+          required
         />
 
         <label htmlFor="latinname">Latin Name:</label>
@@ -74,44 +51,46 @@ function EditVegetation({ vegetationList, setVegetationList, index }) {
           type="text"
           name="latinName"
           id="latinname"
-          onChange={handleLatinName}
+          onChange={(e) => setLatinName(e.target.value)}
           value={latinName}
+          required
         />
 
-       <label htmlFor="category">Category:</label>
+        <label htmlFor="category">Category:</label>
         <select
-        name="category"
-        id="category"
-        onChange={handleCategory}
-        value={category}
+          name="category"
+          id="category"
+          onChange={(e) => setCategory(e.target.value)}
+          value={category}
+          required
         >
-        <option value="">Select one option:</option>
-        <option value="green area">Green Area</option>
-        <option value="tree">Tree</option>
-        <option value="bush">Bush</option>
-        <option value="plant">Plant</option>
-        <option value="flower">Flower</option>
+          <option value="">Select one option:</option>
+          <option value="green area">Green Area</option>
+          <option value="tree">Tree</option>
+          <option value="bush">Bush</option>
+          <option value="plant">Plant</option>
+          <option value="flower">Flower</option>
         </select>
 
         <label htmlFor="description">Description:</label>
-        <input
-          type="text"
+        <textarea
           name="description"
           id="description"
-          onChange={handleDescription}
+          onChange={(e) => setDescription(e.target.value)}
           value={description}
+          required
         />
 
-        <label htmlFor="descriptionImage">Image:</label>
+        <label htmlFor="image">Image:</label>
         <input
           type="url"
           name="image"
           id="image"
-          onChange={handleImage}
+          onChange={(e) => setImage(e.target.value)}
           value={image}
         />
 
-        <button>Edit</button>
+        <button type="submit">Edit</button>
       </form>
     </div>
   );

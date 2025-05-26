@@ -1,22 +1,13 @@
-
-import { Link } from "react-router-dom"
+import { Link } from "react-router-dom";
 import "./Footer.css";
 
 function Footer() {
   return (
     <div id="Footer">
-       <ul>
-        <Link to="">
-          <li>About Project</li>
-        </Link>
-
-        <Link to="./pages/About.jsx">
-          <li>About Authora</li>
-        </Link>
-
-        <Link to="">
-          <li>Links and other info</li>
-        </Link>
+      <ul>
+        <li><Link to="/about">About Project</Link></li>
+        <li><Link to="/about-authora">About Authora</Link></li>
+        <li><Link to="/info">Links and other info</Link></li>
       </ul>
     </div>
   );

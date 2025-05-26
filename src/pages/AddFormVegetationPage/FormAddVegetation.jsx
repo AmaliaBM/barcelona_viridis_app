@@ -1,7 +1,6 @@
-
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import "./AddFormVegetationPage/FormAddVegetationPage.css";
+import "./FormAddVegetation.css";
 
 function FormAddVegetation({ setVegetationList }) {
   const [name, setName] = useState("");
@@ -10,45 +9,21 @@ function FormAddVegetation({ setVegetationList }) {
   const [description, setDescription] = useState("");
   const [image, setImage] = useState("");
 
-  const handleName = (event) => {
-    setName(event.target.value);
-  };
-
-  const handleLatinName = (event) => {
-    setLatinName(event.target.value);
-  };
-
-  const handleCategory = (event) => {
-    setCategory(event.target.value);
-  };
-
-
-  const handleDescription = (event) => {
-    setDescription(event.target.value);
-  };
-
-  const handleImage = (event) => {
-    setImage(event.target.value);
-  };
-
   const navigate = useNavigate();
 
   const handleAddVegetation = (event) => {
     event.preventDefault();
 
     const newVegetation = {
-      name: name,
-      latinName: latinName,
-      category: category,
-      description: description,
+      name,
+      latinName,
+      category,
+      description,
       image: image || "/error404.avif",
       id: String(Math.floor(Math.random() * 10000000)),
     };
 
-    setVegetationList ((valorActual) => {
-      let nuevoEstado = [...valorActual, newVegetation];
-      return nuevoEstado;
-    });
+    setVegetationList((valorActual) => [...valorActual, newVegetation]);
     navigate("/");
   };
 
@@ -56,58 +31,62 @@ function FormAddVegetation({ setVegetationList }) {
     <div id="addvegetation">
       <form onSubmit={handleAddVegetation}>
         <h2>Add Vegetation</h2>
+
         <label htmlFor="name">Vegetation:</label>
         <input
           type="text"
           name="name"
           id="name"
-          onChange={handleName}
+          onChange={(e) => setName(e.target.value)}
           value={name}
+          required
         />
 
-        <label htmlFor="latinname">Latin Name:</label>
+        <label htmlFor="latinName">Latin Name:</label>
         <input
           type="text"
           name="latinName"
-          id="latinname"
-          onChange={handleLatinName}
+          id="latinName"
+          onChange={(e) => setLatinName(e.target.value)}
           value={latinName}
+          required
         />
 
-       <label htmlFor="category">Category:</label>
+        <label htmlFor="category">Category:</label>
         <select
-        name="category"
-        id="category"
-        onChange={handleCategory}
-        value={category}
+          name="category"
+          id="category"
+          onChange={(e) => setCategory(e.target.value)}
+          value={category}
+          required
         >
-        <option value="">Select one option:</option>
-        <option value="green area">Green Area</option>
-        <option value="tree">Tree</option>
-        <option value="bush">Bush</option>
-        <option value="plant">Plant</option>
-        <option value="flower">Flower</option>
+          <option value="">Select one option:</option>
+          <option value="green area">Green Area</option>
+          <option value="tree">Tree</option>
+          <option value="bush">Bush</option>
+          <option value="plant">Plant</option>
+          <option value="flower">Flower</option>
         </select>
 
         <label htmlFor="description">Description:</label>
-        <input
-          type="text"
+        <textarea
           name="description"
           id="description"
-          onChange={handleDescription}
+          onChange={(e) => setDescription(e.target.value)}
           value={description}
+          required
         />
 
-        <label htmlFor="descriptionImage">Image:</label>
+        <label htmlFor="image">Image:</label>
         <input
           type="url"
-          name="imagen"
-          id="imagen"
-          onChange={handleImage}
+          name="image"
+          id="image"
+          onChange={(e) => setImage(e.target.value)}
           value={image}
         />
 
-        <button>Add</button>
+        <button type="submit">Add</button>
       </form>
     </div>
   );

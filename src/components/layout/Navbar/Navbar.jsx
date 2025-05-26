@@ -1,32 +1,20 @@
 
 import { Link } from "react-router-dom";
-import "./components/Navbar.css";
-
-
+import "./Navbar.css";
 
 function Navbar() {
   return (
     <div id="Navbar">
-      <img src="" id="logo1"></img>
-      <h1>Barcelona Viritis</h1>
+      <img src="/logo.png" alt="Barcelona Viridis Logo" id="logo1" />
+      <h1>Barcelona Viridis</h1>
       <ul>
-        <Link to="">
-          <li>Green areas & more</li>
-        </Link>
-
-        <Link to="">
-          <li>Places</li>
-        </Link>
-
-        <Link to="">
-          <li>Add your contributation</li>
-        </Link>
-
-        <Link to="">
-          <li>Articles of interest</li>
-        </Link>
+        <li><Link to="/">Green areas & more</Link></li>
+        <li><Link to="/places">Places</Link></li>
+        <li><Link to="/add">Add your contribution</Link></li>
+        <li><Link to="/articles">Articles of interest</Link></li>
       </ul>
     </div>
   );
 }
+
 export default Navbar;
