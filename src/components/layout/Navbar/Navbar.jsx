@@ -1,12 +1,12 @@
 
 import { Link } from "react-router-dom";
-import "./components/BurgerMenu.css";
+import "./components/Navbar.css";
 
 
 
-function BurgerMenu() {
+function Navbar() {
   return (
-    <div id="BurgerMenu">
+    <div id="Navbar">
       <img src="" id="logo1"></img>
       <h1>Barcelona Viritis</h1>
       <ul>
@@ -29,4 +29,4 @@ function BurgerMenu() {
     </div>
   );
 }
-export default BurgerMenu;
+export default Navbar;

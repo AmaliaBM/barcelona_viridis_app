@@ -1,35 +1,56 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { Routes, Route } from 'react-router-dom';
+import { useState } from 'react';
+
+// Datos iniciales (si los tienes)
+import VegetationArr from './data/VegetationArr';
+import PlacesArr from './data/PlacesArr';
+
+// Importación de páginas
+import HomePage from './pages/HomePage/HomePage';
+import About from './pages/About/About';
+import AboutAuthora from './pages/AboutAuthora/AboutAuthora';
+import ArticlesOfInterest from './pages/ArticlesOfInterest/ArticlesOfInterest';
+import VegetationDetailsPage from './pages/VegetationDetailsPage/VegetationDetailsPage';
+import EditVegetationPage from './pages/EditVegetationPage/EditVegetationPage';
+import FormAddVegetationPage from './pages/FormAddVegetationPage/FormAddVegetationPage';
+import PlaceListPage from './pages/PlaceListPage/PlaceListPage';
+import PlaceDetailsPage from './pages/PlaceDetailsPage/PlaceDetailsPage';
+import NotFound from './pages/NotFound/NotFound';
+
+// Componentes globales
+import Navbar from './components/Navbar/Navbar';
+import Footer from './components/Footer/Footer';
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [vegetationList, setVegetationList] = useState(VegetationArr);
+  const [placesList, setPlacesList] = useState(PlacesArr);
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+    <div className="App">
+      <Navbar />
+      <div id="contenedor">
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/about-authora" element={<AboutAuthora />} />
+          <Route path="/articles-of-interest" element={<ArticlesOfInterest />} />
+
+          {/* Vegetation */}
+          <Route path="/vegetation/:id" element={<VegetationDetailsPage />} />
+          <Route path="/vegetation/:id/edit" element={<EditVegetationPage />} />
+          <Route path="/add-vegetation" element={<FormAddVegetationPage />} />
+
+          {/* Places */}
+          <Route path="/places" element={<PlaceListPage />} />
+          <Route path="/places/:id" element={<PlaceDetailsPage />} />
+
+          {/* 404 */}
+          <Route path="*" element={<NotFound />} />
+        </Routes>
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+      <Footer />
+    </div>
+  );
 }
 
-export default App
+export default App;
