@@ -1,99 +1,166 @@
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
+import { useState, useEffect } from "react";
+import Card from "react-bootstrap/Card";
+import ListGroup from "react-bootstrap/ListGroup";
+import Button from "react-bootstrap/Button";
+import Alert from "react-bootstrap/Alert";
 import "./EditVegetationPage.css";
 
-function EditVegetation({ vegetationList, setVegetationList, index }) {
-  const [name, setName] = useState(vegetationList[index].name);
-  const [latinName, setLatinName] = useState(vegetationList[index].latinName);
-  const [category, setCategory] = useState(vegetationList[index].category);
-  const [description, setDescription] = useState(vegetationList[index].description);
-  const [image, setImage] = useState(vegetationList[index].image);
-
+function EditVegetationPage({ vegetationList, setVegetationList }) {
+  const { id } = useParams();
   const navigate = useNavigate();
 
-  const handleEditVegetation = (event) => {
-    event.preventDefault();
+  const vegetation = vegetationList.find((v) => v.id === parseInt(id));
 
-    const vegetationEdit = {
-      ...vegetationList[index],
+  const [name, setName] = useState("");
+  const [latinName, setLatinName] = useState("");
+  const [category, setCategory] = useState("");
+  const [description, setDescription] = useState("");
+  const [image, setImage] = useState("");
+
+  const [error, setError] = useState("");
+
+  useEffect(() => {
+    if (vegetation) {
+      setName(vegetation.name);
+      setLatinName(vegetation.latinName);
+      setCategory(vegetation.category);
+      setDescription(vegetation.description);
+      setImage(vegetation.image);
+    }
+  }, [vegetation]);
+
+  const isValidImageUrl = (url) => {
+    return /^https?:\/\/.+\.(jpg|jpeg|png|gif|webp|svg)$/i.test(url);
+  };
+
+  const handleSave = (e) => {
+    e.preventDefault();
+    setError("");
+
+    if (!name.trim() || !category || !description.trim()) {
+      setError("Name, category, and description are required.");
+      return;
+    }
+
+    if (image && !isValidImageUrl(image)) {
+      setError("Please enter a valid image URL ending in .jpg, .png, etc.");
+      return;
+    }
+
+    const updated = {
+      ...vegetation,
       name,
       latinName,
       category,
       description,
-      image: image || "/error404.avif",
+      image: image || "/default-image.png",
     };
 
-    const newVegetationList = [...vegetationList];
-    newVegetationList[index] = vegetationEdit;
-
-    setVegetationList(newVegetationList);
-
-    navigate("/");
+    const newList = vegetationList.map((v) =>
+      v.id === updated.id ? updated : v
+    );
+    setVegetationList(newList);
+    navigate(`/vegetation/${id}`);
   };
 
+  const handleDelete = () => {
+    const confirm = window.confirm("Are you sure you want to delete this card?");
+    if (confirm) {
+      const filtered = vegetationList.filter((v) => v.id !== vegetation.id);
+      setVegetationList(filtered);
+      navigate("/vegetation");
+    }
+  };
+
+  if (!vegetation) return <h3>Vegetation not found</h3>;
+
   return (
-    <div id="addvegetation">
+    <div className="edit-page-container">
       <h1>Edit Vegetation</h1>
 
-      <form onSubmit={handleEditVegetation}>
-        <label htmlFor="name">Vegetation Name:</label>
-        <input
-          type="text"
-          name="name"
-          id="name"
-          onChange={(e) => setName(e.target.value)}
-          value={name}
-          required
+      {error && (
+        <Alert variant="danger" className="mb-3">
+          {error}
+        </Alert>
+      )}
+
+      <Card style={{ width: "100%", maxWidth: "600px", margin: "0 auto" }}>
+        <Card.Img
+          variant="top"
+          src={isValidImageUrl(image) ? image : "/default-image.png"}
+          alt="Vegetation Preview"
         />
-
-        <label htmlFor="latinname">Latin Name:</label>
-        <input
-          type="text"
-          name="latinName"
-          id="latinname"
-          onChange={(e) => setLatinName(e.target.value)}
-          value={latinName}
-          required
-        />
-
-        <label htmlFor="category">Category:</label>
-        <select
-          name="category"
-          id="category"
-          onChange={(e) => setCategory(e.target.value)}
-          value={category}
-          required
-        >
-          <option value="">Select one option:</option>
-          <option value="green area">Green Area</option>
-          <option value="tree">Tree</option>
-          <option value="bush">Bush</option>
-          <option value="plant">Plant</option>
-          <option value="flower">Flower</option>
-        </select>
-
-        <label htmlFor="description">Description:</label>
-        <textarea
-          name="description"
-          id="description"
-          onChange={(e) => setDescription(e.target.value)}
-          value={description}
-          required
-        />
-
-        <label htmlFor="image">Image:</label>
-        <input
-          type="url"
-          name="image"
-          id="image"
-          onChange={(e) => setImage(e.target.value)}
-          value={image}
-        />
-
-        <button type="submit">Edit</button>
-      </form>
+        <Card.Body>
+          <Card.Title>
+            <input
+              type="text"
+              className="form-control"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              placeholder="Vegetation name"
+              required
+            />
+          </Card.Title>
+          <Card.Text>
+            <textarea
+              className="form-control"
+              value={description}
+              onChange={(e) => setDescription(e.target.value)}
+              placeholder="Description"
+              required
+            />
+          </Card.Text>
+        </Card.Body>
+        <ListGroup className="list-group-flush">
+          <ListGroup.Item>
+            Latin Name:
+            <input
+              type="text"
+              className="form-control mt-1"
+              value={latinName}
+              onChange={(e) => setLatinName(e.target.value)}
+              placeholder="Latin name"
+            />
+          </ListGroup.Item>
+          <ListGroup.Item>
+            Category:
+            <select
+              className="form-control mt-1"
+              value={category}
+              onChange={(e) => setCategory(e.target.value)}
+              required
+            >
+              <option value="">Select one option</option>
+              <option value="green area">Green Area</option>
+              <option value="tree">Tree</option>
+              <option value="bush">Bush</option>
+              <option value="plant">Plant</option>
+              <option value="flower">Flower</option>
+            </select>
+          </ListGroup.Item>
+          <ListGroup.Item>
+            Image URL:
+            <input
+              type="url"
+              className="form-control mt-1"
+              value={image}
+              onChange={(e) => setImage(e.target.value)}
+              placeholder="https://example.com/image.jpg"
+            />
+          </ListGroup.Item>
+        </ListGroup>
+        <Card.Body className="d-flex justify-content-between">
+          <Button variant="danger" onClick={handleDelete}>
+            Delete
+          </Button>
+          <Button variant="success" onClick={handleSave}>
+            Save
+          </Button>
+        </Card.Body>
+      </Card>
     </div>
   );
 }
 
-export default EditVegetation;
+export default EditVegetationPage;

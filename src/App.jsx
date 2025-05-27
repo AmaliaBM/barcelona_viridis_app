@@ -52,16 +52,8 @@ function App() {
               />
             }
           />
-          <Route
-            path="/vegetation/:id"
-            element={
-              <VegetationDetailsPage
-                vegetationList={vegetationList}
-                setVegetationList={setVegetationList}
-              />
-            }
-          />
-          <Route path="/vegetation/:id/edit" element={<EditVegetationPage />} />
+          <Route path="/vegetation/:id" element={ <VegetationDetailsPage vegetationList={vegetationList} setVegetationList={setVegetationList} /> } />
+          <Route path="/vegetation/:id/edit" element={ <EditVegetationPage vegetationList={vegetationList} setVegetationList={setVegetationList} />} />
           <Route path="/add-vegetation" element={<FormAddVegetationPage />} />
 
           {/* Places */}
