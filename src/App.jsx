@@ -7,8 +7,8 @@ import { useState } from 'react';
 import HomePage from "./pages/HomePage"
 
 import About from './pages/About/About';
-import AboutAuthora from './pages/AboutAuthora/AboutAuthora';
 import ArticlesOfInterest from './pages/ArticlesOfInterest/ArticlesOfInterest';
+import ArticleDetailPage from "./pages/ArticlesOfInterest/ArticleDetailPage"
 import VegetationDetailsPage from './pages/VegetationDetailsPage/VegetationDetailsPage';
 import VegetationPage from './pages/VegetationPage/VegatationPage';
 import EditVegetationPage from './pages/EditVegetationPage/EditVegetationPage';
@@ -35,8 +35,8 @@ function App() {
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/about" element={<About />} />
-          <Route path="/about-authora" element={<AboutAuthora />} />
           <Route path="/articles-of-interest" element={<ArticlesOfInterest />} />
+          <Route path="/articles/:id" element={<ArticleDetailPage />} />
 
           {/* Vegetation */}
           <Route path="/vegetation" element={<VegetationPage vegetationList={vegetationList} setVegetationList={setVegetationList} />} />

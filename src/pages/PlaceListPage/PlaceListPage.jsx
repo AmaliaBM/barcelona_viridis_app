@@ -6,13 +6,31 @@ import ListGroup from 'react-bootstrap/ListGroup';
 function PlaceListPage() { //props quitados temporalmente para poner ejemplos falsos y ver algo en el enrutamiento.
   const placesList = [
     {
-      name: "Gràcia",
+      name: "Ejemplo 1",
       description: "Barrio encantador con plazas y ambiente bohemio.",
       image: "https://via.placeholder.com/286x180?text=Gracia",
       attributes: ["Céntrico", "Cultural", "Comida local"]
     },
     {
-      name: "Eixample",
+      name: "Ejemplo 2",
+      description: "Famoso por su arquitectura modernista.",
+      image: "https://via.placeholder.com/286x180?text=Eixample",
+      attributes: ["Modernista", "Avinguda Diagonal", "Comercial"]
+    },
+    {
+      name: "Ejemplo 3",
+      description: "Famoso por su arquitectura modernista.",
+      image: "https://via.placeholder.com/286x180?text=Eixample",
+      attributes: ["Modernista", "Avinguda Diagonal", "Comercial"]
+    },
+    {
+      name: "Ejemplo 4",
+      description: "Famoso por su arquitectura modernista.",
+      image: "https://via.placeholder.com/286x180?text=Eixample",
+      attributes: ["Modernista", "Avinguda Diagonal", "Comercial"]
+    },
+        {
+      name: "Ejemplo 5",
       description: "Famoso por su arquitectura modernista.",
       image: "https://via.placeholder.com/286x180?text=Eixample",
       attributes: ["Modernista", "Avinguda Diagonal", "Comercial"]

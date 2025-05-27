@@ -3,6 +3,7 @@ import "./HomePage.css";
 
 
 import CustomCarousel from '../components/layout/CustomCarousel';
+import ArticlesOfInterest from "./ArticlesOfInterest/ArticlesOfInterest";
 
 const plantas = [
   { title: "Primera planta", img: "url1" },
@@ -16,13 +17,16 @@ function HomePage() {
       <main>
         <h1>Bienvenido a Barcelona Viridis</h1>
 
-        <section>
-          <h2>Artículos de interés</h2>
+        <section className="mb-5">
+          <ArticlesOfInterest />
         </section>
 
-        <section>
+
+        <div>
+        <section className="mb-5">
         <CustomCarousel vegetation={plantas} />
         </section>
+        </div>
 
         
       </main>
