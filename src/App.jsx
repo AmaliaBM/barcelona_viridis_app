@@ -45,7 +45,7 @@ function App() {
           <Route path="/add-vegetation" element={<FormAddVegetationPage />} />
 
           {/* Places */}
-          <Route path="/places" element={<PlaceListPage placesList={placesList} setPlaceList={setPlacesList} />} />
+          <Route path="/places" element={<PlaceListPage />} />
           <Route path="/places/:id" element={<PlaceDetailsPage />} />
 
           {/* 404 */}
