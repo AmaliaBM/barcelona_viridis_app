@@ -14,9 +14,7 @@ import PlaceDetailsPage from './pages/PlaceDetailsPage/PlaceDetailsPage';
 import PlaceListPage from './pages/PlaceListPage/PlaceListPage';
 import NotFound from './pages/NotFound/NotFound';
 
-// Componentes globales
-import Navbar from './components/layout/Navbar/Navbar';
-import Footer from './components/layout/Footer';
+import Layout from "./components/layout/Layout";
 
 function App() {
   const [vegetationList, setVegetationList] = useState([]);
@@ -33,8 +31,7 @@ function App() {
   }, []);
 
   return (
-    <div className="App">
-      <Navbar />
+    <Layout>
       <div id="contenedor">
         <Routes>
           <Route path="/" element={<HomePage vegetationList={vegetationList} />} />
@@ -52,20 +49,43 @@ function App() {
               />
             }
           />
-          <Route path="/vegetation/:id" element={ <VegetationDetailsPage vegetationList={vegetationList} setVegetationList={setVegetationList} /> } />
-          <Route path="/vegetation/:id/edit" element={ <EditVegetationPage vegetationList={vegetationList} setVegetationList={setVegetationList} />} />
+          <Route
+            path="/vegetation/:id"
+            element={
+              <VegetationDetailsPage
+                vegetationList={vegetationList}
+                setVegetationList={setVegetationList}
+              />
+            }
+          />
+          <Route
+            path="/vegetation/:id/edit"
+            element={
+              <EditVegetationPage
+                vegetationList={vegetationList}
+                setVegetationList={setVegetationList}
+              />
+            }
+          />
           <Route path="/add-vegetation" element={<FormAddVegetationPage />} />
 
           {/* Places */}
           <Route path="/places" element={<PlaceListPage placesList={placesList} />} />
-          <Route path="/places/:id" element={ <PlaceDetailsPage placesList={placesList} vegetationList={vegetationList} /> } />
+          <Route
+            path="/places/:id"
+            element={
+              <PlaceDetailsPage
+                placesList={placesList}
+                vegetationList={vegetationList}
+              />
+            }
+          />
 
           {/* 404 */}
           <Route path="*" element={<NotFound />} />
         </Routes>
       </div>
-      <Footer />
-    </div>
+    </Layout>
   );
 }
 
