@@ -1,7 +1,7 @@
 import { Routes, Route } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 
-// Importación de páginas
+// Páginas
 import HomePage from "./pages/HomePage";
 import About from './pages/About/About';
 import ArticlesOfInterest from './pages/ArticlesOfInterest/ArticlesOfInterest';
@@ -52,7 +52,15 @@ function App() {
               />
             }
           />
-          <Route path="/vegetation/:id" element={<VegetationDetailsPage />} />
+          <Route
+            path="/vegetation/:id"
+            element={
+              <VegetationDetailsPage
+                vegetationList={vegetationList}
+                setVegetationList={setVegetationList}
+              />
+            }
+          />
           <Route path="/vegetation/:id/edit" element={<EditVegetationPage />} />
           <Route path="/add-vegetation" element={<FormAddVegetationPage />} />
 
@@ -70,4 +78,3 @@ function App() {
 }
 
 export default App;
-
