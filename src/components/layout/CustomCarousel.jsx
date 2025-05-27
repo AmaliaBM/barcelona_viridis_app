@@ -1,9 +1,11 @@
 import Carousel from 'react-bootstrap/Carousel';
+import Spinner from 'react-bootstrap/Spinner';
 
 function CustomCarousel({ vegetation }) {
   if (!vegetation || vegetation.length === 0) {
     return (
       <div style={{ textAlign: "center", padding: "2rem" }}>
+        <Spinner animation="border" role="status" />
         <h5>Cargando carrusel...</h5>
       </div>
     );
