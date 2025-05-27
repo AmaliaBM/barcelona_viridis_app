@@ -1,0 +1,9 @@
+.PlaceDetailsPage {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.PlaceDetailsPage img {
+  object-fit: cover;
+  max-height: 400px;
+}

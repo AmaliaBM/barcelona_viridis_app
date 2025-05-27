@@ -58,7 +58,7 @@ function App() {
 
           {/* Places */}
           <Route path="/places" element={<PlaceListPage placesList={placesList} />} />
-          <Route path="/places/:id" element={<PlaceDetailsPage />} />
+          <Route path="/places/:id" element={ <PlaceDetailsPage placesList={placesList} vegetationList={vegetationList} /> } />
 
           {/* 404 */}
           <Route path="*" element={<NotFound />} />
