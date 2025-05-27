@@ -152,7 +152,7 @@ function EditVegetationPage({ vegetationList, setVegetationList }) {
         )}
 
         <div className="d-flex justify-content-between">
-          <Button variant="danger" onClick={handleDelete}>
+          <Button className="btn-delete-pastel" onClick={handleDelete}>
             Delete
           </Button>
           <Button variant="success" type="submit">

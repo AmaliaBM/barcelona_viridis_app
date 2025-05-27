@@ -1,20 +1,27 @@
-import { Routes, Route } from 'react-router-dom';
 import { useState, useEffect } from 'react';
+import { Routes, Route } from 'react-router-dom';
 
-// Páginas
-import HomePage from "./pages/HomePage";
+// Componentes
+import Layout from './components/layout/Layout';
+
+// Páginas principales
+import HomePage from './pages/HomePage';
 import About from './pages/About/About';
-import ArticlesOfInterest from './pages/ArticlesOfInterest/ArticlesOfInterest';
-import ArticleDetailPage from "./pages/ArticlesOfInterest/ArticleDetailPage";
-import VegetationDetailsPage from './pages/VegetationDetailsPage/VegetationDetailsPage';
-import VegetationPage from './pages/VegetationPage/VegatationPage';
-import EditVegetationPage from './pages/EditVegetationPage/EditVegetationPage';
-import FormAddVegetationPage from './pages/AddFormVegetationPage/FormAddVegetation';
-import PlaceDetailsPage from './pages/PlaceDetailsPage/PlaceDetailsPage';
-import PlaceListPage from './pages/PlaceListPage/PlaceListPage';
 import NotFound from './pages/NotFound/NotFound';
 
-import Layout from "./components/layout/Layout";
+// Páginas de artículos
+import ArticlesOfInterest from './pages/ArticlesOfInterest/ArticlesOfInterest';
+import ArticleDetailPage from './pages/ArticlesOfInterest/ArticleDetailPage';
+
+// Páginas de vegetación
+import VegetationPage from './pages/VegetationPage/VegatationPage';
+import VegetationDetailsPage from './pages/VegetationDetailsPage/VegetationDetailsPage';
+import EditVegetationPage from './pages/EditVegetationPage/EditVegetationPage';
+import FormAddVegetation from './pages/AddFormVegetationPage/FormAddVegetation';
+
+// Páginas de lugares
+import PlaceListPage from './pages/PlaceListPage/PlaceListPage';
+import PlaceDetailsPage from './pages/PlaceDetailsPage/PlaceDetailsPage';
 
 function App() {
   const [vegetationList, setVegetationList] = useState([]);
@@ -34,12 +41,13 @@ function App() {
     <Layout>
       <div id="contenedor">
         <Routes>
+          {/* Inicio y páginas generales */}
           <Route path="/" element={<HomePage vegetationList={vegetationList} />} />
           <Route path="/about" element={<About />} />
           <Route path="/articles-of-interest" element={<ArticlesOfInterest />} />
           <Route path="/articles/:id" element={<ArticleDetailPage />} />
 
-          {/* Vegetation */}
+          {/* Vegetación */}
           <Route
             path="/vegetation"
             element={
@@ -67,9 +75,12 @@ function App() {
               />
             }
           />
-          <Route path="/add-vegetation" element={<FormAddVegetationPage />} />
+          <Route
+            path="/add-vegetation"
+            element={<FormAddVegetation setVegetationList={setVegetationList} />}
+          />
 
-          {/* Places */}
+          {/* Lugares */}
           <Route path="/places" element={<PlaceListPage placesList={placesList} />} />
           <Route
             path="/places/:id"
@@ -81,7 +92,7 @@ function App() {
             }
           />
 
-          {/* 404 */}
+          {/* Página no encontrada */}
           <Route path="*" element={<NotFound />} />
         </Routes>
       </div>

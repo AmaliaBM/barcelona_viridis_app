@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import "./FormAddVegetation.css";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
+import ThankYouModal from "./ThankYouModal"; // Asegúrate que el path es correcto
 
 function FormAddVegetation({ setVegetationList }) {
   const [name, setName] = useState("");
@@ -10,23 +10,30 @@ function FormAddVegetation({ setVegetationList }) {
   const [category, setCategory] = useState("");
   const [description, setDescription] = useState("");
   const [image, setImage] = useState("");
+  const [showModal, setShowModal] = useState(false);
 
   const navigate = useNavigate();
 
-  const handleAddVegetation = (event) => {
-    event.preventDefault();
+  const handleAddVegetation = (e) => {
+    e.preventDefault();
 
     const newVegetation = {
-      name,
-      latinName,
+      name: name.trim(),
+      latinName: latinName.trim(),
       category,
-      description,
+      description: description.trim(),
       image: image || "/error404.avif",
-      id: String(Math.floor(Math.random() * 10000000)),
+      id: String(Date.now()),
     };
 
-    setVegetationList((currentList) => [...currentList, newVegetation]);
-    navigate("/");
+    // Validación mínima
+    if (!name || !latinName || !category || !description) {
+      alert("Por favor, completa todos los campos obligatorios.");
+      return;
+    }
+
+    setVegetationList((prevList) => [...prevList, newVegetation]);
+    setShowModal(true);
   };
 
   const handleImageUpload = (e) => {
@@ -34,41 +41,43 @@ function FormAddVegetation({ setVegetationList }) {
     if (file) {
       const reader = new FileReader();
       reader.onloadend = () => {
-        setImage(reader.result); // base64
+        setImage(reader.result);
       };
       reader.readAsDataURL(file);
     }
   };
 
+  const handleModalClose = () => {
+    setShowModal(false);
+    navigate("/"); // redirige después de cerrar el modal
+  };
+
   return (
-    <div id="addvegetation" className="container mt-4">
-      <div className="FormAddVegetationPage">
+    <div className="container mt-4">
       <Form onSubmit={handleAddVegetation}>
         <h2 className="mb-4">Add Vegetation</h2>
 
-        <Form.Group className="mb-3" controlId="formName">
+        <Form.Group className="mb-3">
           <Form.Label>Vegetation Name</Form.Label>
           <Form.Control
             type="text"
             value={name}
             onChange={(e) => setName(e.target.value)}
             required
-            placeholder="e.g. Almez"
           />
         </Form.Group>
 
-        <Form.Group className="mb-3" controlId="formLatinName">
+        <Form.Group className="mb-3">
           <Form.Label>Latin Name</Form.Label>
           <Form.Control
             type="text"
             value={latinName}
             onChange={(e) => setLatinName(e.target.value)}
             required
-            placeholder="e.g. Celtis australis"
           />
         </Form.Group>
 
-        <Form.Group className="mb-3" controlId="formCategory">
+        <Form.Group className="mb-3">
           <Form.Label>Category</Form.Label>
           <Form.Select
             value={category}
@@ -84,7 +93,7 @@ function FormAddVegetation({ setVegetationList }) {
           </Form.Select>
         </Form.Group>
 
-        <Form.Group className="mb-3" controlId="formDescription">
+        <Form.Group className="mb-3">
           <Form.Label>Description</Form.Label>
           <Form.Control
             as="textarea"
@@ -92,22 +101,24 @@ function FormAddVegetation({ setVegetationList }) {
             value={description}
             onChange={(e) => setDescription(e.target.value)}
             required
-            placeholder="Add a short description..."
           />
         </Form.Group>
 
-        <Form.Group className="mb-3" controlId="formFile">
+        <Form.Group className="mb-3">
           <Form.Label>Upload an Image</Form.Label>
-          <Form.Control type="file" accept="image/*" onChange={handleImageUpload} />
+          <Form.Control
+            type="file"
+            accept="image/*"
+            onChange={handleImageUpload}
+          />
         </Form.Group>
 
         {image && (
           <div className="mb-3 text-center">
-            <p>Preview:</p>
             <img
               src={image}
-              alt="Vegetation Preview"
-              style={{ maxWidth: "300px", maxHeight: "200px", borderRadius: "8px" }}
+              alt="Preview"
+              style={{ maxWidth: "300px", maxHeight: "200px" }}
             />
           </div>
         )}
@@ -118,7 +129,9 @@ function FormAddVegetation({ setVegetationList }) {
           </Button>
         </div>
       </Form>
-    </div></div>
+
+      <ThankYouModal show={showModal} handleClose={handleModalClose} />
+    </div>
   );
 }
 

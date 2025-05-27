@@ -67,7 +67,7 @@ button,
   border-color: #4caf50;
   color: white;
   cursor: pointer;
-  transition: background-color 0.25s, border-color 0.25s;
+  transition: 0.25s, 0.25s;
 }
 
 button:hover,
@@ -78,6 +78,34 @@ button:focus,
   border-color: #388e3c;
   outline: none;
 }
+
+.btn-delete-pastel {
+  background-color: #f4a3a3; /* rojo pastel */
+  border-color: #f4a3a3;
+  color: #7a2a2a;
+  font-weight: 600;
+  border-radius: 8px;
+  padding: 0.6em 1.2em;
+  transition: 0.25s ease,  0.25s ease;
+}
+
+.btn-delete-pastel:hover,
+.btn-delete-pastel:focus {
+  background-color: #6b1414; /* rojo oscuro */
+  border-color: #6b1414;
+  color: white;
+  outline: none;
+}
+
+.btn-edit:hover,
+.btn-edit:focus {
+  background-color: #8cc070;
+  border-color: #8cc070;
+  color: #1f3215;
+  outline: none;
+}
+
+
 
 /* Pie de página discreto */
 footer {
@@ -111,27 +139,3 @@ footer {
   color: white !important;
 }
 
-/* Media query para modo claro (prefers-color-scheme) */
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #388e3c;
-  }
-  body {
-    background-color: #f0f8f5;
-    color: #213547;
-  }
-  footer {
-    background-color: #e0f0dc;
-    color: #213547;
-    border-top-color: #8fb88f;
-  }
-  .card {
-    background-color: white;
-    color: #213547;
-    box-shadow: 0 4px 12px rgba(33, 53, 71, 0.1);
-  }
-}
