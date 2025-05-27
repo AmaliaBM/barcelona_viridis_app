@@ -24,6 +24,6 @@
 /* En pantallas grandes, puedes permitir que crezca un poco */
 @media (min-width: 992px) {
   .logo {
-    height: 100px;
+    height: 150px;
   }
 }
