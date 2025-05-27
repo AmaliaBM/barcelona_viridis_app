@@ -24,10 +24,18 @@ a:hover {
 
 body {
   margin: 0;
-  display: flex;
-  place-items: center;
   min-width: 320px;
   min-height: 100vh;
+  /* Elimina display:flex y place-items */
+}
+
+#contenedor {
+  max-width: 960px; /* ancho máximo típico para desktop */
+  margin-left: auto;
+  margin-right: auto; /* centra horizontalmente */
+  padding-left: 1rem;
+  padding-right: 1rem; /* para que no toque los bordes en móvil */
+  box-sizing: border-box;
 }
 
 h1 {

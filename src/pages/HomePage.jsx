@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Container } from "react-bootstrap";
 import "./HomePage.css";
 
 import CustomCarousel from '../components/layout/CustomCarousel';
@@ -13,21 +13,24 @@ function HomePage({ vegetationList }) {
   }));
 
   return (
-    <div>
-      <main>
-        <h1>Bienvenido a Barcelona Viridis</h1>
+    <div className="HomePage">
+    <div className="home-wrapper">
+      <Container className="home-container">
+        <main>
+          <h1 className="text-center mb-4">Bienvenido a Barcelona Viridis</h1>
 
-        <section className="mb-5">
-          <CustomCarousel vegetation={carouselData} />
-        </section>
+          <section className="mb-5">
+            <CustomCarousel vegetation={carouselData} />
+          </section>
 
-        <section className="mb-5">
-          <ArticlesOfInterest />
-        </section>
-      </main>
-    </div>
+          <section className="mb-5">
+            <ArticlesOfInterest />
+          </section>
+        </main>
+      </Container>
+    </div></div>
   );
 }
 
-
 export default HomePage;
+

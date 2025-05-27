@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 
 function VegetationPage({ vegetationList }) {
   return (
-    <div id="VegetationPage" style={{ padding: "1rem" }}>
+    <div className="VegetationPage" style={{ padding: "1rem" }}>
       <Row xs={1} md={2} lg={3} className="g-4">
         {vegetationList.map((veg) => (
           <Col key={veg.id}>

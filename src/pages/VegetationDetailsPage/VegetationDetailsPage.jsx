@@ -23,6 +23,7 @@ function VegetationDetailsPage({ vegetationList, setVegetationList }) {
 
   return (
     <div className="d-flex justify-content-center mt-5">
+      <div className="VegetationDetailsPage">
       <Card style={{ width: '22rem' }}>
         <Card.Img
           variant="top"
@@ -46,7 +47,7 @@ function VegetationDetailsPage({ vegetationList, setVegetationList }) {
           </Link>
         </Card.Body>
       </Card>
-    </div>
+    </div></div>
   );
 }
 
