@@ -23,6 +23,8 @@ function HomePage() {
         <section>
         <CustomCarousel vegetation={plantas} />
         </section>
+
+        
       </main>
     </div>
   );

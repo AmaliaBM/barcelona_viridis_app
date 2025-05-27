@@ -1,14 +1,17 @@
 import { Link } from "react-router-dom";
 import "./Footer.css";
 
+import ListGroup from 'react-bootstrap/ListGroup';
+
+
 function Footer() {
   return (
     <div id="Footer">
-      <ul>
-        <li><Link to="/about">About Project</Link></li>
-        <li><Link to="/about-authora">About Authora</Link></li>
-        <li><Link to="/info">Links and other info</Link></li>
-      </ul>
+       <ListGroup>
+      <ListGroup.Item><Link to="/about">About Project</Link></ListGroup.Item>
+      <ListGroup.Item><Link to="/about-authora">About Authora</Link></ListGroup.Item>
+      <ListGroup.Item><Link to="/info">Links and other info</Link></ListGroup.Item>
+      </ListGroup>
     </div>
   );
 }

@@ -17,12 +17,12 @@ function Navbar() {
         <BootstrapNavbar.Brand><Link to="/">Barcelona Viritis</Link></BootstrapNavbar.Brand>
         <BootstrapNavbar.Toggle aria-controls="basic-navbar-nav" />
         <BootstrapNavbar.Collapse id="basic-navbar-nav">
-          <Nav className="me-auto">
-            <BootstrapNavbar.Text><Link to="/vegetation">Vegetation</Link></BootstrapNavbar.Text>
-            <BootstrapNavbar.Text><Link to="/places">Places</Link></BootstrapNavbar.Text>
-            <BootstrapNavbar.Text><Link to="/add-vegetation">Add your contribution</Link></BootstrapNavbar.Text>
-            <BootstrapNavbar.Text><Link to="/articles-of-interest"> Articles of interest</Link></BootstrapNavbar.Text>
-          </Nav>
+         <Nav className="me-auto">
+          <BootstrapNavbar.Text><Link to="/vegetation">Vegetation</Link></BootstrapNavbar.Text>
+          <BootstrapNavbar.Text><Link to="/places">Places</Link></BootstrapNavbar.Text>
+          <BootstrapNavbar.Text><Link to="/add-vegetation">Add your contribution</Link></BootstrapNavbar.Text>
+          <BootstrapNavbar.Text><Link to="/articles-of-interest"> Articles of interest</Link></BootstrapNavbar.Text>
+        </Nav>
         </BootstrapNavbar.Collapse>
       </Container>
     </BootstrapNavbar>

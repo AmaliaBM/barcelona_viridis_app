@@ -1,0 +1,17 @@
+
+
+/* Añade espacio entre los elementos de texto del navbar */
+.navbar .navbar-text {
+  margin-right: 1rem;
+}
+
+/* Estilo base para los enlaces */
+.navbar .navbar-text a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Estilo hover opcional */
+.navbar .navbar-text a:hover {
+  text-decoration: underline;
+}
