@@ -35,3 +35,4 @@ function PlaceListPage({ placesList }) {
 }
 
 export default PlaceListPage;
+

@@ -1,47 +1,54 @@
 
 import { useParams, useNavigate, Link } from "react-router-dom";
-import "./VegetationDetailsPage.css"
+import Card from 'react-bootstrap/Card';
+import ListGroup from 'react-bootstrap/ListGroup';
+import Button from 'react-bootstrap/Button';
+import './VegetationDetailsPage.css';
 
-function VegetationDetails({ vegetationList, setVegetationList }) {
-  const params = useParams();
+function VegetationDetailsPage({ vegetationList, setVegetationList }) {
+  const { id } = useParams(); // nombre de parámetro corregido
   const navigate = useNavigate();
 
-  const vegetationCard = vegetationlist.find((eachVegetation) => {
-    if (eachVegetation.id === params.idVegetation) {
-      return true;
-    }
-  });
+  const vegetation = vegetationList.find((each) => each.id === Number(id));
 
-  const handleDeleteVegetation= (idVegetation) => {
-    const cloneState = vegetationlist.filter((vegetation) => vegetation.id !== idVegetation);
-    setVegetationList(cloneState);
-    navigate("/");
+  const handleDelete = () => {
+    const updatedList = vegetationList.filter((each) => each.id !== Number(id));
+    setVegetationList(updatedList);
+    navigate("/vegetation"); // vuelve al listado
   };
 
-  if (!vegetationCard) {
-    return <h3>There is not vegetation</h3>;
+  if (!vegetation) {
+    return <h3 style={{ textAlign: "center", marginTop: "2rem" }}>🌱 Vegetación no encontrada</h3>;
   }
 
   return (
-    <div id="container-detalle">
-      Vegetation:{vegetationCard.name}
-      <p> Latin Name: {vegetationCard.latinName}</p>
-      <p> Category : {vegetationCard.category}</p>
-      <p>Description: {vegetationCard.description < 400 ? "✅" : "❌"}</p>
-      <img src={vegetationCard.image}></img>
-      <div id="btn">
-        <button
-          id="delete-btn"
-          onClick={() => handleDeleteVegetation(vegetationCard.id)}
-        >
-          Delete
-        </button>
-        <Link to={`//${vegetationCard.id}`}>
-          <button>Edit Vegetation</button>
-        </Link>
-      </div>
-    </div>
+    <div className="d-flex justify-content-center mt-5">
+      <div className="VegetationDetailsPage">
+      <Card style={{ width: '22rem' }}>
+        <Card.Img
+          variant="top"
+          src={vegetation.image || "https://via.placeholder.com/300x180?text=Sin+imagen"}
+          alt={vegetation.name}
+        />
+        <Card.Body>
+          <Card.Title>{vegetation.name}</Card.Title>
+          <Card.Text>{vegetation.description}</Card.Text>
+        </Card.Body>
+        <ListGroup className="list-group-flush">
+          <ListGroup.Item><strong>Latin Name:</strong> {vegetation.latinName}</ListGroup.Item>
+          <ListGroup.Item><strong>Category:</strong> {vegetation.category}</ListGroup.Item>
+        </ListGroup>
+        <Card.Body className="d-flex justify-content-between">
+          <Button variant="secondary" onClick={() => navigate("/vegetation")}>
+            Cancel
+          </Button>
+          <Link to={`/vegetation/${vegetation.id}/edit`}>
+            <Button variant="primary">Edit</Button>
+          </Link>
+        </Card.Body>
+      </Card>
+    </div></div>
   );
 }
 
-export default VegetationDetails;
+export default VegetationDetailsPage;

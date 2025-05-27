@@ -1,114 +1,136 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import "./FormAddVegetation.css";
-
-import { Form, Button } from 'react-bootstrap';
+import Button from "react-bootstrap/Button";
+import Form from "react-bootstrap/Form";
+import ThankYouModal from "./ThankYouModal"; // Asegúrate que el path es correcto
 
 function FormAddVegetation({ setVegetationList }) {
-  const [name, setName] = useState('');
-  const [latinName, setLatinName] = useState('');
-  const [description, setDescription] = useState('');
-  const [image, setImage] = useState('');
-  const [category, setCategory] = useState('');
+  const [name, setName] = useState("");
+  const [latinName, setLatinName] = useState("");
+  const [category, setCategory] = useState("");
+  const [description, setDescription] = useState("");
+  const [image, setImage] = useState("");
+  const [showModal, setShowModal] = useState(false);
 
   const navigate = useNavigate();
 
-  const handleAddVegetation = (event) => {
-    event.preventDefault();
+  const handleAddVegetation = (e) => {
+    e.preventDefault();
 
     const newVegetation = {
-      name,
-      latinName,
+      name: name.trim(),
+      latinName: latinName.trim(),
       category,
-      description,
+      description: description.trim(),
       image: image || "/error404.avif",
-      id: String(Math.floor(Math.random() * 10000000)),
+      id: String(Date.now()),
     };
 
-    setVegetationList((valorActual) => [...valorActual, newVegetation]);
-    navigate("/");
+    // Validación mínima
+    if (!name || !latinName || !category || !description) {
+      alert("Por favor, completa todos los campos obligatorios.");
+      return;
+    }
+
+    setVegetationList((prevList) => [...prevList, newVegetation]);
+    setShowModal(true);
+  };
+
+  const handleImageUpload = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        setImage(reader.result);
+      };
+      reader.readAsDataURL(file);
+    }
+  };
+
+  const handleModalClose = () => {
+    setShowModal(false);
+    navigate("/"); // redirige después de cerrar el modal
   };
 
   return (
-    <div id="addvegetation">
+    <div className="container mt-4">
       <Form onSubmit={handleAddVegetation}>
-        <h2>Add Vegetation</h2>
+        <h2 className="mb-4">Add Vegetation</h2>
 
-        <Form.Group controlId="category">
+        <Form.Group className="mb-3">
+          <Form.Label>Vegetation Name</Form.Label>
+          <Form.Control
+            type="text"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            required
+          />
+        </Form.Group>
+
+        <Form.Group className="mb-3">
+          <Form.Label>Latin Name</Form.Label>
+          <Form.Control
+            type="text"
+            value={latinName}
+            onChange={(e) => setLatinName(e.target.value)}
+            required
+          />
+        </Form.Group>
+
+        <Form.Group className="mb-3">
           <Form.Label>Category</Form.Label>
           <Form.Select
-            aria-label="Select category"
             value={category}
             onChange={(e) => setCategory(e.target.value)}
             required
           >
-            <option value="">Select one option of category:</option>
-            <option value="greenarea">Green Area</option>
+            <option value="">Select a category</option>
+            <option value="green area">Green Area</option>
             <option value="tree">Tree</option>
             <option value="bush">Bush</option>
+            <option value="plant">Plant</option>
             <option value="flower">Flower</option>
           </Form.Select>
         </Form.Group>
 
-        <Form.Group controlId="name">
-          <Form.Label>Vegetation's name</Form.Label>
-          <Form.Control
-            type="text"
-            name="name"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-            required
-            aria-describedby="nameHelp"
-          />
-          <Form.Text id="nameHelp" muted>
-            Don't worry if you don't know the exact species of the plant.
-          </Form.Text>
-        </Form.Group>
-
-        <Form.Group controlId="latinname">
-          <Form.Label>Latin Name</Form.Label>
-          <Form.Control
-            type="text"
-            name="latinName"
-            value={latinName}
-            onChange={(e) => setLatinName(e.target.value)}
-            aria-describedby="latinHelp"
-          />
-          <Form.Text id="latinHelp" muted>
-            This is optional if you only know the common name.
-          </Form.Text>
-        </Form.Group>
-
-        <Form.Group controlId="description">
+        <Form.Group className="mb-3">
           <Form.Label>Description</Form.Label>
           <Form.Control
             as="textarea"
             rows={3}
-            name="description"
             value={description}
             onChange={(e) => setDescription(e.target.value)}
             required
           />
         </Form.Group>
 
-        <Form.Group controlId="image">
-          <Form.Label>Image URL</Form.Label>
+        <Form.Group className="mb-3">
+          <Form.Label>Upload an Image</Form.Label>
           <Form.Control
-            type="url"
-            name="image"
-            value={image}
-            onChange={(e) => setImage(e.target.value)}
-            required
+            type="file"
+            accept="image/*"
+            onChange={handleImageUpload}
           />
-          <Form.Text muted>
-            Optional: You can provide a link to an image of the vegetation.
-          </Form.Text>
         </Form.Group>
 
-        <Button variant="primary" type="submit">
-          Add
-        </Button>
+        {image && (
+          <div className="mb-3 text-center">
+            <img
+              src={image}
+              alt="Preview"
+              style={{ maxWidth: "300px", maxHeight: "200px" }}
+            />
+          </div>
+        )}
+
+        <div className="text-end">
+          <Button variant="primary" type="submit">
+            Add Vegetation
+          </Button>
+        </div>
       </Form>
+
+      <ThankYouModal show={showModal} handleClose={handleModalClose} />
     </div>
   );
 }

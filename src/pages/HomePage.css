@@ -1,3 +1,43 @@
-h2 {
-color: black
+.home-wrapper {
+  display: flex;
+  justify-content: center;
+  padding: 1rem;
+}
+
+.home-container {
+  width: 100%;
+  max-width: 960px; /* Ajusta según prefieras */
+}
+
+.home-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.intro-text {
+  font-size: 1.1rem;
+  max-width: 600px;
+  margin: 0 auto;
+  color: #2e4d25;
+}
+
+/* Para pantallas más grandes */
+@media (min-width: 768px) {
+  .home-header {
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    text-align: left;
+  }
+
+  .home-header > h1 {
+    margin-right: 2rem;
+  }
+
+  .intro-text {
+    max-width: 500px;
+  }
 }
