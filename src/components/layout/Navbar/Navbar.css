@@ -16,3 +16,14 @@
   text-decoration: underline;
 }
 
+.logo {
+  height: 80px; /* Altura base garantizada */
+  width: auto;
+}
+
+/* En pantallas grandes, puedes permitir que crezca un poco */
+@media (min-width: 992px) {
+  .logo {
+    height: 100px;
+  }
+}

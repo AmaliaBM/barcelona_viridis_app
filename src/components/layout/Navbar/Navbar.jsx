@@ -4,8 +4,8 @@ import "./Navbar.css";
 
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
+import logo from '../../../assets/BarcelonaViridis.svg';
 import BootstrapNavbar from 'react-bootstrap/Navbar';
-import NavDropdown from 'react-bootstrap/NavDropdown';
 
 
 function Navbar() {
@@ -14,7 +14,13 @@ function Navbar() {
 
     <BootstrapNavbar expand="lg" className="bg-body-tertiary">
       <Container>
-        <BootstrapNavbar.Brand><Link to="/">Barcelona Viritis</Link></BootstrapNavbar.Brand>
+        <BootstrapNavbar.Brand as={Link} to="/">
+        <img
+          src={logo}
+            alt="Barcelona Viridis Logo"
+            className="logo d-inline-block align-top"
+        />
+      </BootstrapNavbar.Brand>
         <BootstrapNavbar.Toggle aria-controls="basic-navbar-nav" />
         <BootstrapNavbar.Collapse id="basic-navbar-nav">
          <Nav className="me-auto">
