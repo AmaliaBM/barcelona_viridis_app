@@ -14,21 +14,26 @@ function HomePage({ vegetationList }) {
 
   return (
     <div className="HomePage">
-    <div className="home-wrapper">
-      <Container className="home-container">
-        <main>
-          <h1 className="text-center mb-4">Bienvenido a Barcelona Viridis</h1>
+      <div className="home-wrapper">
+        <Container className="home-container">
+          <main>
+            <div className="home-header">
+              <p className="intro-text">
+              Barcelona Viridis is a collaborative application that invites you to discover, share, and protect Barcelona's urban vegetation.
+              </p>
+            </div>
 
-          <section className="mb-5">
-            <CustomCarousel vegetation={carouselData} />
-          </section>
+            <section className="mb-5">
+              <CustomCarousel vegetation={carouselData} />
+            </section>
 
-          <section className="mb-5">
-            <ArticlesOfInterest />
-          </section>
-        </main>
-      </Container>
-    </div></div>
+            <section className="mb-5">
+              <ArticlesOfInterest />
+            </section>
+          </main>
+        </Container>
+      </div>
+    </div>
   );
 }
 

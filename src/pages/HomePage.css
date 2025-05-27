@@ -1,5 +1,3 @@
-/* HomePage.css */
-
 .home-wrapper {
   display: flex;
   justify-content: center;
@@ -8,11 +6,38 @@
 
 .home-container {
   width: 100%;
-  max-width: 960px; /* Ajusta según lo que consideres un buen ancho en escritorio */
+  max-width: 960px; /* Ajusta según prefieras */
 }
 
-body {
-  margin: 0;
-  padding: 0;
-  /* También: verifica que no haya display: flex o width: 100vw forzado */
+.home-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.intro-text {
+  font-size: 1.1rem;
+  max-width: 600px;
+  margin: 0 auto;
+  color: #2e4d25;
+}
+
+/* Para pantallas más grandes */
+@media (min-width: 768px) {
+  .home-header {
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    text-align: left;
+  }
+
+  .home-header > h1 {
+    margin-right: 2rem;
+  }
+
+  .intro-text {
+    max-width: 500px;
+  }
 }
