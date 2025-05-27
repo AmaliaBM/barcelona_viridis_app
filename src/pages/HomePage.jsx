@@ -5,13 +5,12 @@ import CustomCarousel from '../components/layout/CustomCarousel';
 import ArticlesOfInterest from "./ArticlesOfInterest/ArticlesOfInterest";
 
 function HomePage({ vegetationList }) {
-  const carouselData = vegetationList
-    .slice(0, 5)
-    .map((item) => ({
-      title: item.name,
-      img: item.image || "https://via.placeholder.com/800x400?text=Imagen+no+disponible",
-      id: item.id,
-    }));
+  const carouselData = vegetationList.map((item) => ({
+    id: item.id,
+    name: item.name,
+    category: item.category,
+    image: item.image
+  }));
 
   return (
     <div>
@@ -29,4 +28,6 @@ function HomePage({ vegetationList }) {
     </div>
   );
 }
+
+
 export default HomePage;

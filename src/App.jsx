@@ -23,7 +23,7 @@ function App() {
   const [placesList, setPlacesList] = useState([]);
 
   useEffect(() => {
-    fetch("https://raw.githubusercontent.com/tuusuario/barcelona_viridis_server/main/db.json")
+    fetch("https://raw.githubusercontent.com/AmaliaBM/barcelona_viridis_server/master/db.json")
       .then((res) => res.json())
       .then((data) => {
         setVegetationList(data.vegetation);

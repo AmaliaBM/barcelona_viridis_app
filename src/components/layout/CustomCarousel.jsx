@@ -17,11 +17,12 @@ function CustomCarousel({ vegetation }) {
         <Carousel.Item key={item.id}>
           <img
             className="d-block w-100"
-            src={item.img}
-            alt={item.title}
+            src={item.image || "https://via.placeholder.com/800x400?text=Sin+imagen"}
+            alt={item.name}
           />
           <Carousel.Caption>
-            <h3>{item.title}</h3>
+            <h3>{item.name}</h3>
+            <p>{item.category}</p>
           </Carousel.Caption>
         </Carousel.Item>
       ))}
@@ -30,4 +31,3 @@ function CustomCarousel({ vegetation }) {
 }
 
 export default CustomCarousel;
-
