@@ -34,9 +34,4 @@ function PlaceListPage({ placesList }) {
   );
 }
 
-<<<<<<< HEAD:src/pages/PlaceListPage/PlaceListPage.jsx
 export default PlaceListPage;
-
-=======
-export default PlaceListPage;
->>>>>>> master:src/pages/PlacesListPage/PlaceList.jsx
