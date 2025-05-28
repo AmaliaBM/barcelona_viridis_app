@@ -1,5 +1,5 @@
 import Select from 'react-select';
-
+import { useNavigate } from 'react-router-dom';
 
 const options = [
   { value: 'tree', label: '🌲 Tree' },
@@ -8,12 +8,14 @@ const options = [
   { value: 'green_area', label: '🏞️🌳 Green area' },
 ];
 
-function SearchBar({ onCategoryChange }) {
+function SearchBar() {
+  const navigate = useNavigate();
+
   const customStyles = {
     option: (provided, state) => ({
       ...provided,
       backgroundColor: state.isFocused ? '#c8e6c9' : 'white',
-      color: state.isFocused ? '#2e4d25' : '#2e4d25',
+      color: '#2e4d25',
       cursor: 'pointer',
       fontWeight: 500,
     }),
@@ -40,11 +42,19 @@ function SearchBar({ onCategoryChange }) {
     }),
   };
 
+  const handleChange = (selectedOption) => {
+    if (selectedOption) {
+      navigate(`/vegetation/category/${selectedOption.value}`);
+    } else {
+      navigate('/vegetation'); // o donde quieras para limpiar filtro
+    }
+  };
+
   return (
     <Select
       options={options}
       styles={customStyles}
-      onChange={(selectedOption) => onCategoryChange(selectedOption?.value || '')}
+      onChange={handleChange}
       placeholder="🌿 Looking for something specific? Select an option 🔍"
       isClearable
     />
