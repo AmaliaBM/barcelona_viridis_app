@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import ThankYouModal from "./ThankYouModal"; // Asegúrate que el path es correcto
@@ -14,8 +15,14 @@ function FormAddVegetation({ setVegetationList }) {
 
   const navigate = useNavigate();
 
-  const handleAddVegetation = (e) => {
+  const handleAddVegetation = async (e) => {
     e.preventDefault();
+
+    // Validación mínima
+    if (!name.trim() || !category || !description.trim()) {
+      alert("Por favor, completa todos los campos obligatorios.");
+      return;
+    }
 
     const newVegetation = {
       name: name.trim(),
@@ -23,17 +30,26 @@ function FormAddVegetation({ setVegetationList }) {
       category,
       description: description.trim(),
       image: image || "/error404.avif",
-      id: String(Date.now()),
+      // No seteamos id aquí, lo debe manejar el backend
     };
 
-    // Validación mínima
-    if (!name || !latinName || !category || !description) {
-      alert("Por favor, completa todos los campos obligatorios.");
-      return;
-    }
+    try {
+      const response = await axios.post(
+        "https://barcelona-viridis-server.onrender.com/vegetation",
+        newVegetation
+      );
 
-    setVegetationList((prevList) => [...prevList, newVegetation]);
-    setShowModal(true);
+      // Asumo que la respuesta devuelve el objeto creado con id
+      const createdVegetation = response.data;
+
+      // Actualizamos el estado con el nuevo objeto devuelto por el backend
+      setVegetationList((prevList) => [...prevList, createdVegetation]);
+
+      setShowModal(true);
+    } catch (error) {
+      console.error("Error al añadir vegetación:", error);
+      alert("Error al añadir la vegetación. Intenta de nuevo más tarde.");
+    }
   };
 
   const handleImageUpload = (e) => {
@@ -66,7 +82,8 @@ function FormAddVegetation({ setVegetationList }) {
             required
           />
           <Form.Text className="text-muted">
-          Don't worry if you don't know the exact name. You can write the name you know the plant by.  </Form.Text>
+            Don't worry if you don't know the exact name. You can write the name you know the plant by.
+          </Form.Text>
         </Form.Group>
 
         <Form.Group className="mb-3">
@@ -76,8 +93,7 @@ function FormAddVegetation({ setVegetationList }) {
             value={latinName}
             onChange={(e) => setLatinName(e.target.value)}
           />
-          <Form.Text className="text-muted">
-          This is not mandatory </Form.Text>
+          <Form.Text className="text-muted">This is not mandatory</Form.Text>
         </Form.Group>
 
         <Form.Group className="mb-3">
@@ -106,21 +122,17 @@ function FormAddVegetation({ setVegetationList }) {
             required
           />
           <Form.Text className="text-muted">
-          You can enter the address where it's located here. We'll review the database and organize the content.  </Form.Text>
+            You can enter the address where it's located here. We'll review the database and organize the content.
+          </Form.Text>
         </Form.Group>
 
         <Form.Group className="mb-3">
           <Form.Label>Upload an Image</Form.Label>
-          <Form.Control
-            type="file"
-            accept="image/*"
-            onChange={handleImageUpload}
-          />
-           <Form.Text className="text-muted">
-          Last but not least, we need you to add a photo of the vegetation you want to add.
- </Form.Text>
+          <Form.Control type="file" accept="image/*" onChange={handleImageUpload} />
+          <Form.Text className="text-muted">
+            Last but not least, we need you to add a photo of the vegetation you want to add.
+          </Form.Text>
         </Form.Group>
-        
 
         {image && (
           <div className="mb-3 text-center">
