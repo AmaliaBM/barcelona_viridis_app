@@ -171,3 +171,46 @@ footer {
   line-height: 1.6;
   color: #2e4d25; /* color verde oscuro para legibilidad */
 }
+
+.autor-nombre {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 30px;
+  flex-wrap: wrap; /* para que el texto no se desborde */
+}
+
+.git {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin-top: 30px;
+  flex-wrap: wrap; /* permite que imagen y texto bajen si no caben */
+}
+
+.git img {
+  width: 200px;
+  border-radius: 25%;
+  flex-shrink: 0; /* evita que la imagen se encoja */
+}
+
+/* Media query para pantallas pequeñas */
+@media (max-width: 600px) {
+  .autor-nombre {
+    justify-content: center; /* centra el texto */
+  }
+
+  .git {
+    flex-direction: column; /* pone imagen y texto uno encima de otro */
+    align-items: center;    /* centra contenido */
+  }
+
+  .git img {
+    width: 150px; /* reduce tamaño de imagen para móviles */
+    margin-bottom: 20px; /* espacio debajo de la imagen */
+  }
+
+  .git div {
+    text-align: center; /* centra el texto */
+  }
+}
