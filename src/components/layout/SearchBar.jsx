@@ -1,5 +1,5 @@
 import Select from 'react-select';
-import './SearchBar.css'; // Si tienes estilos adicionales
+
 
 const options = [
   { value: 'tree', label: '🌲 Tree' },
