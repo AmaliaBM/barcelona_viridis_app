@@ -166,3 +166,8 @@ footer {
     height: 120px;
   }
 }
+.article-paragraph {
+  margin-bottom: 1rem;
+  line-height: 1.6;
+  color: #2e4d25; /* color verde oscuro para legibilidad */
+}

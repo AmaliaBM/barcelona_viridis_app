@@ -9,12 +9,19 @@ function ArticleDetailPage({ articles }) {
     return <p>Artículo no encontrado.</p>;
   }
 
+  // Para evitar errores si no hay texto
+  const content = article.text || article.content || "";
+
   return (
     <Card>
       <Card.Img variant="top" src={article.image || "https://via.placeholder.com/600x300"} />
       <Card.Body>
         <Card.Title>{article.title}</Card.Title>
-        <Card.Text>{article.text || article.content}</Card.Text>
+        <div>
+          {content.split('\n\n').map((paragraph, idx) => (
+            <p key={idx} className="article-paragraph">{paragraph}</p>
+          ))}
+        </div>
       </Card.Body>
     </Card>
   );
