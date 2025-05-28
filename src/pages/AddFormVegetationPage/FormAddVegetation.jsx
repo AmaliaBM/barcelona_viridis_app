@@ -18,7 +18,6 @@ function FormAddVegetation({ setVegetationList }) {
   const handleAddVegetation = async (e) => {
     e.preventDefault();
 
-    // Validación mínima
     if (!name.trim() || !category || !description.trim()) {
       alert("Por favor, completa todos los campos obligatorios.");
       return;
@@ -30,7 +29,6 @@ function FormAddVegetation({ setVegetationList }) {
       category,
       description: description.trim(),
       image: image || "/error404.avif",
-      // No seteamos id aquí, lo debe manejar el backend
     };
 
     try {
@@ -39,12 +37,8 @@ function FormAddVegetation({ setVegetationList }) {
         newVegetation
       );
 
-      // Asumo que la respuesta devuelve el objeto creado con id
       const createdVegetation = response.data;
-
-      // Actualizamos el estado con el nuevo objeto devuelto por el backend
       setVegetationList((prevList) => [...prevList, createdVegetation]);
-
       setShowModal(true);
     } catch (error) {
       console.error("Error al añadir vegetación:", error);
@@ -52,20 +46,56 @@ function FormAddVegetation({ setVegetationList }) {
     }
   };
 
-  const handleImageUpload = (e) => {
-    const file = e.target.files[0];
-    if (file) {
-      const reader = new FileReader();
-      reader.onloadend = () => {
-        setImage(reader.result);
+const handleImageUpload = (e) => {
+  const file = e.target.files[0];
+  if (file && file.type.startsWith("image/")) {
+    const reader = new FileReader();
+    reader.onload = (event) => {
+      const img = new Image();
+      img.onload = () => {
+        const targetWidth = 640;
+        const targetHeight = 320;
+
+        const canvas = document.createElement("canvas");
+        canvas.width = targetWidth;
+        canvas.height = targetHeight;
+        const ctx = canvas.getContext("2d");
+
+        // Fondo blanco por si hay transparencia
+        ctx.fillStyle = "#ffffff";
+        ctx.fillRect(0, 0, targetWidth, targetHeight);
+
+        // Mantener proporción sin deformar
+        const scale = Math.max(
+          targetWidth / img.width,
+          targetHeight / img.height
+        );
+        const x = (targetWidth - img.width * scale) / 2;
+        const y = (targetHeight - img.height * scale) / 2;
+
+        ctx.drawImage(
+          img,
+          x,
+          y,
+          img.width * scale,
+          img.height * scale
+        );
+
+        // Comprimir ligeramente
+        const resizedDataUrl = canvas.toDataURL("image/jpeg", 0.8);
+        setImage(resizedDataUrl);
       };
-      reader.readAsDataURL(file);
-    }
-  };
+      img.src = event.target.result;
+    };
+    reader.readAsDataURL(file);
+  } else {
+    alert("Por favor sube un archivo de imagen válido.");
+  }
+};
 
   const handleModalClose = () => {
     setShowModal(false);
-    navigate("/"); // redirige después de cerrar el modal
+    navigate("/");
   };
 
   return (
