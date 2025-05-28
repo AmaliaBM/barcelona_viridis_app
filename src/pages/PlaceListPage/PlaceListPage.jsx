@@ -19,7 +19,7 @@ function PlaceListPage({ placesList }) {
           </Card.Body>
 
           <ListGroup className="list-group-flush">
-            <ListGroup.Item>Place: {place.name} </ListGroup.Item>
+            <ListGroup.Item>📍Place: {place.name} </ListGroup.Item>
           </ListGroup>
 
           <Card.Body>
