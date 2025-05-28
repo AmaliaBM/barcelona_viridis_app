@@ -18,7 +18,7 @@ function About() {
           <div>
             <p>
               LinkedIn:{" "}
-              <a href="https://www.linkedin.com/in/amaliabarrigasmunuera/">
+              <a href="https://www.linkedin.com/in/amaliabarrigasmunuera/" target="_blank">
                 Amalia Barrigas Munuera
               </a>
             </p>
