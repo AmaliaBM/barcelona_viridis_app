@@ -3,22 +3,6 @@ import ListGroup from 'react-bootstrap/ListGroup';
 import "./Places.css";
 
 function Places() {
-  const placesList = [
-    {
-      name: "Gràcia",
-      description: "Barrio encantador con plazas y ambiente bohemio.",
-      image: "https://via.placeholder.com/286x180?text=Gracia",
-      attributes: ["Céntrico", "Cultural", "Comida local"]
-    },
-    {
-      name: "Eixample",
-      description: "Famoso por su arquitectura modernista.",
-      image: "https://via.placeholder.com/286x180?text=Eixample",
-      attributes: ["Modernista", "Avinguda Diagonal", "Comercial"]
-    }
-    // Puedes añadir más barrios aquí...
-  ];
-
   return (
     <div id="Places" className="d-flex flex-wrap justify-content-start">
       {placesList.map((place, index) => (

@@ -11,7 +11,7 @@ function PlaceDetailsPage({ placesList, vegetationList }) {
   const place = placesList.find((eachPlace) => eachPlace.id === parseInt(id));
 
   if (!place) {
-    return <h3 className="text-center mt-4">Place not found</h3>;
+    return <h3 className="text-center mt-4">Oh sorry, place not found</h3>;
   }
 
   const relatedVegetation = vegetationList.filter(
@@ -43,7 +43,7 @@ function PlaceDetailsPage({ placesList, vegetationList }) {
       {/* CARRUSEL de vegetación */}
       {relatedVegetation.length > 0 && (
         <>
-          <h4 className="text-center mb-3">Related Vegetation</h4>
+          <h4 className="text-center mb-3">🍀Vegetation in this area🌼</h4>
           <Carousel className="mb-5">
             {relatedVegetation.map((veg) => (
               <Carousel.Item key={veg.id}>

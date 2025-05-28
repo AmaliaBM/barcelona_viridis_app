@@ -65,6 +65,8 @@ function FormAddVegetation({ setVegetationList }) {
             onChange={(e) => setName(e.target.value)}
             required
           />
+          <Form.Text className="text-muted">
+          Don't worry if you don't know the exact name. You can write the name you know the plant by.  </Form.Text>
         </Form.Group>
 
         <Form.Group className="mb-3">
@@ -73,8 +75,9 @@ function FormAddVegetation({ setVegetationList }) {
             type="text"
             value={latinName}
             onChange={(e) => setLatinName(e.target.value)}
-            required
           />
+          <Form.Text className="text-muted">
+          This is not mandatory </Form.Text>
         </Form.Group>
 
         <Form.Group className="mb-3">
@@ -102,6 +105,8 @@ function FormAddVegetation({ setVegetationList }) {
             onChange={(e) => setDescription(e.target.value)}
             required
           />
+          <Form.Text className="text-muted">
+          You can enter the address where it's located here. We'll review the database and organize the content.  </Form.Text>
         </Form.Group>
 
         <Form.Group className="mb-3">
@@ -111,7 +116,11 @@ function FormAddVegetation({ setVegetationList }) {
             accept="image/*"
             onChange={handleImageUpload}
           />
+           <Form.Text className="text-muted">
+          Last but not least, we need you to add a photo of the vegetation you want to add.
+ </Form.Text>
         </Form.Group>
+        
 
         {image && (
           <div className="mb-3 text-center">

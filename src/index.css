@@ -125,7 +125,7 @@ footer {
   color: #2e4d25;
 }
 
-/* React-Bootstrap overrides (si quieres que btn-success siga igual) */
+/* React-Bootstrap overrides*/
 .btn-success {
   background-color: #4caf50 !important;
   border-color: #4caf50 !important;
