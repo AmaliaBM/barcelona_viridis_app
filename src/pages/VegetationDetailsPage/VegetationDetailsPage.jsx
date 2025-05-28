@@ -27,7 +27,7 @@ function VegetationDetailsPage({ vegetationList, setVegetationList }) {
         <Card style={{ width: '22rem' }}>
           <Card.Img
             variant="top"
-            src={vegetation.image || "https://via.placeholder.com/300x180?text=Sin+imagen"}
+            src={vegetation.image}
             alt={vegetation.name}
           />
           <Card.Body>
