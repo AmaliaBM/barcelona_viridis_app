@@ -9,11 +9,12 @@ function VegetationPage({ vegetationList }) {
       <Row xs={1} md={2} lg={3} className="g-4">
         {vegetationList.map((veg) => (
           <Col key={veg.id}>
-            <Card>
+            <Card className="veg-card">
               <Card.Img 
                 variant="top" 
                 src={veg.image || "https://via.placeholder.com/300x160?text=Sin+imagen"} 
                 alt={veg.name} 
+                className="veg-card-img"
               />
               <Card.Body>
                 <Card.Title>{veg.name}</Card.Title>
