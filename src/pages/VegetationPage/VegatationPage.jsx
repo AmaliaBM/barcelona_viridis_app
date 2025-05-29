@@ -18,7 +18,6 @@ function VegetationPage({ vegetationList }) {
               />
               <Card.Body>
                 <Card.Title>{veg.name}</Card.Title>
-                <Card.Subtitle className="mb-2 text-muted">{veg.category}</Card.Subtitle>
                 <Card.Text>
                     {veg.description.length > 150  ? veg.description.slice(0, 150) + "..."  : veg.description}
                 </Card.Text>
