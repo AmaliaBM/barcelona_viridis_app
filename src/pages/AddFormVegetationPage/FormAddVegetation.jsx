@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
-import ThankYouModal from "./ThankYouModal"; // Asegúrate que el path es correcto
+import ThankYouModal from "./ThankYouModal"; 
 
 function FormAddVegetation({ setVegetationList }) {
   const [name, setName] = useState("");
@@ -19,7 +19,7 @@ function FormAddVegetation({ setVegetationList }) {
     e.preventDefault();
 
     if (!name.trim() || !category || !description.trim()) {
-      alert("Por favor, completa todos los campos obligatorios.");
+      alert("Please complete all required fields");
       return;
     }
 
@@ -28,7 +28,7 @@ function FormAddVegetation({ setVegetationList }) {
       latinName: latinName.trim(),
       category,
       description: description.trim(),
-      image: image || "/error404.avif",
+      image: image,
     };
 
     try {
@@ -41,8 +41,8 @@ function FormAddVegetation({ setVegetationList }) {
       setVegetationList((prevList) => [...prevList, createdVegetation]);
       setShowModal(true);
     } catch (error) {
-      console.error("Error al añadir vegetación:", error);
-      alert("Error al añadir la vegetación. Intenta de nuevo más tarde.");
+      console.error("Error adding vegetation:", error);
+      alert("Error adding vegetation. Please try again later.");
     }
   };
 
@@ -89,7 +89,7 @@ const handleImageUpload = (e) => {
     };
     reader.readAsDataURL(file);
   } else {
-    alert("Por favor sube un archivo de imagen válido.");
+    alert("Please upload a valid image file.");
   }
 };
 

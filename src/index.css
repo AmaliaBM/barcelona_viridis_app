@@ -187,11 +187,11 @@ button:focus,
   display: flex;
   align-items: center;
   gap: 10px;
+  margin-top: 40px; /* <-- NUEVO: añade espacio desde arriba */
   margin-bottom: 30px;
   flex-wrap: wrap;
 }
 
-.autor-nombre h2,
 .autor-nombre h3 {
   margin: 0;
   font-weight: normal;

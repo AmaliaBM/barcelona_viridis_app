@@ -46,7 +46,7 @@ function SearchBar() {
     if (selectedOption) {
       navigate(`/vegetation/category/${selectedOption.value}`);
     } else {
-      navigate('/vegetation'); // o donde quieras para limpiar filtro
+      navigate('/vegetation'); 
     }
   };
 

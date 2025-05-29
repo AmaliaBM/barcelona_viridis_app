@@ -30,7 +30,7 @@ function ArticlesOfInterest() {
         <Card key={article.id} className="mb-3">
           <Card.Img
             variant="top"
-            src={article.image || "https://via.placeholder.com/300x150?text=No+Image"}
+            src={article.image}
             alt={article.title}
           />
           <Card.Body>

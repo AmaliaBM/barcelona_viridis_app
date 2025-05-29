@@ -43,7 +43,7 @@ function VegetationDetailsPage({ vegetationList, setVegetationList }) {
               Cancel
             </Button>
             <Link to={`/vegetation/${vegetation.id}/edit`}>
-              <Button variant="primary">Edit</Button>
+              <Button variant="primary">Edit info📝</Button>
             </Link>
             </Card.Body>
         </Card>

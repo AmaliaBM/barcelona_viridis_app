@@ -98,7 +98,7 @@ function EditVegetationPage({ vegetationList, setVegetationList }) {
     }
   };
 
-  if (!vegetation) return <h3 className="text-center mt-4">Vegetation not found</h3>;
+  if (!vegetation) return <h3 className="text-center mt-4">🍁Vegetation not found🍂</h3>;
 
   return (
     <div className="edit-page-container container mt-4">
@@ -140,10 +140,10 @@ function EditVegetationPage({ vegetationList, setVegetationList }) {
             >
               <option value="">Select one option</option>
               <option value="green area">Green Area</option>
-              <option value="tree">Tree</option>
-              <option value="bush">Bush</option>
-              <option value="plant">Plant</option>
-              <option value="flower">Flower</option>
+              <option value="tree">Tree🌲</option>
+              <option value="bush">Bush🌿</option>
+              <option value="green_area">Green Area 🏞️🌳</option>
+              <option value="flower">Flower🌸</option>
             </Form.Select>
           </Form.Group>
 
@@ -176,10 +176,10 @@ function EditVegetationPage({ vegetationList, setVegetationList }) {
 
           <div className="d-flex justify-content-between">
             <Button className="btn-delete-pastel" onClick={handleDelete}>
-              Delete
+              ⛔Delete
             </Button>
             <Button variant="success" type="submit">
-              Save
+              Save✅
             </Button>
           </div>
         </Form>

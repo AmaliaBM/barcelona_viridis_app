@@ -5,7 +5,7 @@ function About() {
   return (
     <div id="autor">
       <div className="autor-nombre">
-        <h2>Autora:</h2>
+        <h3>Autora:</h3>
         <h3>Amalia Barrigas</h3>
       </div>
 
@@ -23,6 +23,8 @@ function About() {
               </a>
             </p>
             <p>UX/UI | Ilustrator | Web development | Studying psychology at UNED as a hobby</p>
+            <br />
+            <p>Passionate about design, curious by nature, and always in search of the story behind each detail. With a deep love for urban greenery, I created this project to bring nature and technology together—one tree at a time.</p>
           </div>
         </div>
       </div>

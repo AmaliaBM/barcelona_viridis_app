@@ -6,8 +6,8 @@ function CustomCarousel({ vegetation }) {
   if (!vegetation || vegetation.length === 0) {
     return (
       <div style={{ textAlign: "center", padding: "2rem" }}>
-        <div className="spinner-carousel"></div>
-        <h5>...Loading carousel...</h5>
+        <Spinner animation="border" role="status" />
+        <h5>...Loading carrusel...</h5>
       </div>
     );
   }
@@ -19,7 +19,7 @@ function CustomCarousel({ vegetation }) {
           <div className="carousel-image-wrapper">
             <img
               className="carousel-image"
-              src={item.image || "https://via.placeholder.com/800x400?text=Sin+imagen"}
+              src={item.image}
               alt={item.name}
             />
           </div>
