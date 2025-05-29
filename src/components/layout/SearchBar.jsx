@@ -5,7 +5,7 @@ const options = [
   { value: 'tree', label: '🌲 Tree' },
   { value: 'bush', label: '🌿 Bush' },
   { value: 'flower', label: '🌸 Flower' },
-  { value: 'green_area', label: '🏞️🌳 Green area' },
+  { value: 'green area', label: '🏞️🌳 Green area' },
 ];
 
 function SearchBar() {
