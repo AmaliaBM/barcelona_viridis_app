@@ -25,7 +25,6 @@ function CustomCarousel({ vegetation }) {
           </div>
           <div className="carousel-caption-wrapper">
             <h3>{item.name}</h3>
-            <p>{item.category}</p>
           </div>
         </Carousel.Item>
       ))}
