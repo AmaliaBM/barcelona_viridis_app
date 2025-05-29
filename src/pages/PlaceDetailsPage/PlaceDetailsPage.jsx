@@ -11,7 +11,7 @@ function PlaceDetailsPage({ placesList, vegetationList }) {
   const place = placesList.find((eachPlace) => eachPlace.id === parseInt(id));
 
   if (!place) {
-    return <h3 className="text-center mt-4">Oh sorry, place not found</h3>;
+    return <h3 className="text-center mt-4">Oh sorry, place not found💐</h3>;
   }
 
   const relatedVegetation = vegetationList.filter(
@@ -21,7 +21,7 @@ function PlaceDetailsPage({ placesList, vegetationList }) {
   return (
     <Container className="py-4 PlaceDetailsPage">
       <Card className="mb-4 shadow-sm">
-        <Card.Img variant="top" src={place.image || "https://via.placeholder.com/600x300"} alt={place.name} />
+        <Card.Img variant="top" src={place.image} alt={place.name} />
         <Card.Body>
           <Card.Title>{place.name}</Card.Title>
           <Card.Subtitle className="mb-2 text-muted">{place.district}</Card.Subtitle>
@@ -50,13 +50,12 @@ function PlaceDetailsPage({ placesList, vegetationList }) {
                 <Link to={`/vegetation/${veg.id}`}>
                   <img
                     className="d-block w-100"
-                    src={veg.image || "https://via.placeholder.com/600x300?text=No+Image"}
+                    src={veg.image || ""}
                     alt={veg.name}
                     style={{ maxHeight: "400px", objectFit: "cover", cursor: "pointer" }}
                   />
                   <Carousel.Caption>
-                    <h5>{veg.name} <small>({veg.latinName})</small></h5>
-                    <p>{veg.category}</p>
+                    <h5>{veg.name}</h5>
                   </Carousel.Caption>
                 </Link>
               </Carousel.Item>

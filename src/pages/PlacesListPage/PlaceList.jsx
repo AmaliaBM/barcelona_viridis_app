@@ -10,7 +10,7 @@ function PlaceListPage({ placesList }) {
         <Card key={place.id} style={{ width: "18rem", margin: "1rem" }}>
           <Card.Img
             variant="top"
-            src={place.image || "https://via.placeholder.com/286x180?text=No+Image"}
+            src={place.image}
             alt={place.name}
           />
           <Card.Body>

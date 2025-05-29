@@ -22,6 +22,7 @@
   max-width: 600px;
   margin: 0 auto;
   color: #2e4d25;
+  margin-top: 2rem; /* Puedes ajustar el valor según necesites */
 }
 
 /* Para pantallas más grandes */

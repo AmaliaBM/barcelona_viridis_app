@@ -12,7 +12,7 @@ function VegetationPage({ vegetationList }) {
             <Card className="veg-card">
               <Card.Img 
                 variant="top" 
-                src={veg.image || "https://via.placeholder.com/300x160?text=Sin+imagen"} 
+                src={veg.image} 
                 alt={veg.name} 
                 className="veg-card-img"
               />

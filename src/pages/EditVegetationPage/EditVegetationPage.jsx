@@ -138,7 +138,7 @@ function EditVegetationPage({ vegetationList, setVegetationList }) {
               onChange={(e) => setCategory(e.target.value)}
               required
             >
-              <option value="">Select one option</option>
+              <option value="">↓↓ Select one option ↓↓</option>
               <option value="green area">Green Area</option>
               <option value="tree">Tree🌲</option>
               <option value="bush">Bush🌿</option>

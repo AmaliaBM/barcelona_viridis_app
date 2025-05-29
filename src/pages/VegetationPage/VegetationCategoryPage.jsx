@@ -34,7 +34,7 @@ function VegetationCategoryPage() {
         <Card key={item.id} style={{ width: '18rem', margin: '1rem' }}>
           <Card.Img
             variant="top"
-            src={item.image || "https://via.placeholder.com/286x180?text=No+Image"}
+            src={item.image}
             alt={item.name}
           />
           <Card.Body>

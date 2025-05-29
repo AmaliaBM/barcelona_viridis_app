@@ -18,7 +18,7 @@ function VegetationDetailsPage({ vegetationList, setVegetationList }) {
   };
 
   if (!vegetation) {
-    return <h3 style={{ textAlign: "center", marginTop: "2rem" }}>🌱 Vegetación no encontrada</h3>;
+    return <h3 style={{ textAlign: "center", marginTop: "2rem" }}>🌱 Vegetation not found 🌵</h3>;
   }
 
   return (
