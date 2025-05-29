@@ -235,3 +235,42 @@ button:focus,
     text-align: center;
   }
 }
+
+/* --------------------- */
+/* ESTILO EN CARRUSEL   */
+/* --------------------- */
+
+.carousel-image-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 400px; /* Ajusta esta altura según tu diseño */
+}
+
+.carousel-image {
+  max-height: 100%;
+  max-width: 100%;
+  object-fit: contain;
+}
+
+/* Centrado vertical solo en pantallas grandes */
+@media (min-width: 768px) {
+  .carousel-image-wrapper {
+    height: 500px; /* altura más alta en pantallas grandes */
+  }
+}
+.carousel-title {
+  text-align: center;
+  margin-top: 1rem;
+}
+
+.carousel-title h3 {
+  margin: 0;
+  font-size: 1.2rem;
+  color: #2e4d25; /* O el color que uses */
+}
+
+/* Elimina espacio sobrante en carrusel */
+.carousel-caption-wrapper {
+  display: none;
+}

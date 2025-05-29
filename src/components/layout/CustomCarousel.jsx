@@ -1,6 +1,6 @@
 import Carousel from 'react-bootstrap/Carousel';
 import Spinner from 'react-bootstrap/Spinner';
-import './CustomCarousel.css'; // Asegúrate de tener los estilos aplicados
+import './CustomCarousel.css';
 
 function CustomCarousel({ vegetation }) {
   if (!vegetation || vegetation.length === 0) {
@@ -23,7 +23,7 @@ function CustomCarousel({ vegetation }) {
               alt={item.name}
             />
           </div>
-          <div className="carousel-caption-wrapper">
+          <div className="carousel-title">
             <h3>{item.name}</h3>
           </div>
         </Carousel.Item>
