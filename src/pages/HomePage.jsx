@@ -42,10 +42,7 @@ function HomePage({ vegetationList }) {
                   <strong>🌿Barcelona Viridis🌹</strong> is a collaborative application that was developed as a final project for Module 2 in the<strong> Web Development bootcamp offered by Ironhack.</strong>
                 </p>
                 <p>
-                  With this application, I invite users to explore, protect, and share information about urban vegetation in Barcelona.
-                </p>
-                <p>
-                  Users can also learn through scientifically backed articles about how important green spaces, trees, and plants are for our health in urban environments.
+                 This app invites users to explore, protect, and share information about urban vegetation in Barcelona, while learning about the importance of green spaces for urban health.
                 </p>
               </div>
             </div>
