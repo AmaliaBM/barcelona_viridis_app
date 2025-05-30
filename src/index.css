@@ -252,7 +252,7 @@ button:focus,
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 400px; /* Ajusta esta altura según tu diseño */
+  height: 400px; 
 }
 
 .carousel-image {
@@ -275,7 +275,7 @@ button:focus,
 .carousel-title h3 {
   margin: 0;
   font-size: 1.2rem;
-  color: #2e4d25; /* O el color que uses */
+  color: #2e4d25; 
 }
 
 /* Elimina espacio sobrante en carrusel */

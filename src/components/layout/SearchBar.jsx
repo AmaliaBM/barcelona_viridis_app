@@ -14,7 +14,7 @@ function SearchBar() {
   const customStyles = {
     option: (provided, state) => ({
       ...provided,
-      backgroundColor: state.isFocused ? '#c8e6c9' : 'white',
+      backgroundColor: state.isFocused ? '#c8e6c9' : 'white', //esto es necesario para superponer el estilo verde sobre el azul que viene predefinido por reactboostrap
       color: '#2e4d25',
       cursor: 'pointer',
       fontWeight: 500,
