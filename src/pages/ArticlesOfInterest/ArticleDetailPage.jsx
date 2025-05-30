@@ -15,7 +15,7 @@ function ArticleDetailPage({ articles }) {
   return (
     <div className="page-content">
     <Card>
-      <Card.Img variant="top" src={article.image || "https://via.placeholder.com/600x300"} />
+      <Card.Img variant="top" src={article.image || ""} />
       <Card.Body>
         <Card.Title>{article.title}</Card.Title>
         <div>

@@ -25,6 +25,8 @@ function About() {
             <p>🎨UX/UI | Ilustrator | 💻Web development | 🧠Studying psychology at UNED as a hobby</p>
             <br />
             <p>Passionate about design, curious by nature, and always in search of the story behind each detail. With a deep love for urban greenery, I created this project to bring nature and technology together—one tree at a time.</p>
+            <br />
+            <p>In this APP the illustration that I designed is the logo and the ICON, the rest come from image banks. **</p>
           </div>
         </div>
       </div>

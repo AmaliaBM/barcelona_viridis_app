@@ -53,7 +53,7 @@ function HomePage({ vegetationList }) {
             <section className="mb-4">
               <SearchBar onCategoryChange={handleCategoryChange} />
             </section>
-
+            
             <section className="mb-5">
               <ArticlesOfInterest />
             </section>
