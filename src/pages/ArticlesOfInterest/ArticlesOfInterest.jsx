@@ -25,7 +25,7 @@ function ArticlesOfInterest() {
   if (error) return <p className="text-danger">{error}</p>;
 
   return (
-    <>
+      <div className="page-content">
       {articles.map((article) => (
         <Card key={article.id} className="mb-3">
           <Card.Img
@@ -40,7 +40,7 @@ function ArticlesOfInterest() {
           </Card.Body>
         </Card>
       ))}
-    </>
+    </div>
   );
 }
 

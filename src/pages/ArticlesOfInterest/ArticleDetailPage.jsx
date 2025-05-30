@@ -13,6 +13,7 @@ function ArticleDetailPage({ articles }) {
   const content = article.text || article.content || "";
 
   return (
+    <div className="page-content">
     <Card>
       <Card.Img variant="top" src={article.image || "https://via.placeholder.com/600x300"} />
       <Card.Body>
@@ -24,6 +25,7 @@ function ArticleDetailPage({ articles }) {
         </div>
       </Card.Body>
     </Card>
+    </div>
   );
 }
 

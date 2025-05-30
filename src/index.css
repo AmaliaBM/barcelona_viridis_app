@@ -180,6 +180,14 @@ button:focus,
 }
 
 /* --------------------- */
+/* SECCIÓN ARTICULOS        */
+/* --------------------- */
+
+.page-content {
+  margin-top: 2rem; 
+}
+
+/* --------------------- */
 /* SECCIÓN AUTORA        */
 /* --------------------- */
 
@@ -274,3 +282,5 @@ button:focus,
 .carousel-caption-wrapper {
   display: none;
 }
+
+
