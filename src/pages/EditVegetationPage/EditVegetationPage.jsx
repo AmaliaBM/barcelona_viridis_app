@@ -4,6 +4,7 @@ import axios from "axios";
 import Button from "react-bootstrap/Button";
 import Alert from "react-bootstrap/Alert";
 import Form from "react-bootstrap/Form";
+import Select from "react-select";
 import "./EditVegetationPage.css";
 
 function EditVegetationPage({ vegetationList, setVegetationList }) {
@@ -18,6 +19,44 @@ function EditVegetationPage({ vegetationList, setVegetationList }) {
   const [description, setDescription] = useState("");
   const [image, setImage] = useState("");
   const [error, setError] = useState("");
+
+  const categoryOptions = [
+    { value: "green area", label: "🏞️🌳 Green Area" },
+    { value: "tree", label: "🌲 Tree" },
+    { value: "bush", label: "🌿 Bush" },
+    { value: "flower", label: "🌸 Flower" },
+  ];
+
+  const customStyles = {
+    option: (provided, state) => ({
+      ...provided,
+      backgroundColor: state.isFocused ? "#c8e6c9" : "white",
+      color: "#2e4d25",
+      cursor: "pointer",
+      fontWeight: 500,
+    }),
+    control: (provided, state) => ({
+      ...provided,
+      backgroundColor: "#f1f6f0",
+      borderColor: state.isFocused ? "#388e3c" : "#4caf50",
+      borderRadius: 8,
+      padding: "2px 4px",
+      boxShadow: state.isFocused ? "0 0 0 0.25rem rgba(76, 175, 80, 0.25)" : "none",
+      "&:hover": {
+        borderColor: "#388e3c",
+      },
+    }),
+    placeholder: (provided) => ({
+      ...provided,
+      color: "#2e4d25",
+      fontWeight: 500,
+    }),
+    singleValue: (provided) => ({
+      ...provided,
+      color: "#2e4d25",
+      fontWeight: 500,
+    }),
+  };
 
   useEffect(() => {
     if (vegetation) {
@@ -58,7 +97,6 @@ function EditVegetationPage({ vegetationList, setVegetationList }) {
     };
 
     try {
-      // PUT request para actualizar la vegetación en el backend
       const response = await axios.put(
         `https://barcelona-viridis-server.onrender.com/vegetation/${id}`,
         updatedVegetation
@@ -66,7 +104,6 @@ function EditVegetationPage({ vegetationList, setVegetationList }) {
 
       const updatedFromServer = response.data;
 
-      // Actualizamos la lista local con la respuesta del servidor
       const newList = vegetationList.map((v) =>
         v.id === updatedFromServer.id ? updatedFromServer : v
       );
@@ -84,10 +121,8 @@ function EditVegetationPage({ vegetationList, setVegetationList }) {
     if (!confirmDelete) return;
 
     try {
-      // DELETE request al backend
       await axios.delete(`https://barcelona-viridis-server.onrender.com/vegetation/${id}`);
 
-      // Actualizamos la lista local quitando el elemento eliminado
       const filtered = vegetationList.filter((v) => v.id !== vegetation.id);
       setVegetationList(filtered);
 
@@ -133,18 +168,14 @@ function EditVegetationPage({ vegetationList, setVegetationList }) {
 
           <Form.Group className="mb-3">
             <Form.Label>Category</Form.Label>
-            <Form.Select
-              value={category}
-              onChange={(e) => setCategory(e.target.value)}
-              required
-            >
-              <option value="">↓↓ Select one option ↓↓</option>
-              <option value="green area">Green Area</option>
-              <option value="tree">Tree🌲</option>
-              <option value="bush">Bush🌿</option>
-              <option value="green_area">Green Area 🏞️🌳</option>
-              <option value="flower">Flower🌸</option>
-            </Form.Select>
+            <Select
+              value={categoryOptions.find((opt) => opt.value === category)}
+              onChange={(selectedOption) => setCategory(selectedOption ? selectedOption.value : "")}
+              options={categoryOptions}
+              styles={customStyles}
+              isClearable
+              placeholder="↓↓ Select one option ↓↓"
+            />
           </Form.Group>
 
           <Form.Group className="mb-3">
