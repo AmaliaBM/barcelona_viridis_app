@@ -24,9 +24,9 @@ function VegetationCategoryPage() {
       });
   }, [category]);
 
-  if (loading) return <p>Cargando vegetación...</p>;
+  if (loading) return <p>...Loading vegetation...</p>;
   if (error) return <p className="text-danger">{error}</p>;
-  if (items.length === 0) return <p>No se encontraron resultados para "{category}".</p>;
+  if (items.length === 0) return <p>We don't found something for{category}".</p>;
 
   return (
     <div className="d-flex flex-wrap justify-content-start" style={{ padding: '1rem' }}>
