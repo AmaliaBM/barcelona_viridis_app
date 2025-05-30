@@ -3,7 +3,7 @@
 function NotFound() {
   return (
     <div>
-      <h1>🌿Ups, page not found.🌿</h1>
+      <h1>🌿Ups sorry, page not found, maybe it dosn't exist yet... 🌿</h1>
     </div>
   )
 }
